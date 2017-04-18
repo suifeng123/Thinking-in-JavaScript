@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script type="text/javascript">
+    /**
+     * 对象的深拷贝的方法就是将对象遍历一边，赋值给一个
+     * 新的对象
+     */
+    var deepCopy = function (source) {
+      var result ={};
+      for(var key in source){
+        result[key] = typeof source[key]==='object'? deepCopy(source[key]): source[key];
+    }
+    return result;
+    }
+  </script>
+</head>
+<body>
+
+</body>
+</html>

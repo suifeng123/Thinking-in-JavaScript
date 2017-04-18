@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script type="text/javascript">
+    /*
+    闭包实现的原理是高阶函数能够穿透作用域的引用
+     */
+    function outter() {
+      const innerVariable = 'foobar'
+
+      return function () {
+        return innerVariable
+      }
+    }
+    const fn = outter()
+    console.log(fn())
+  </script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+

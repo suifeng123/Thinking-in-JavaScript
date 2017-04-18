@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <title>Title</title>
+  <script type="text/javascript">
+    const arr1 = [];
+    for(var i=0;i<3;i++){
+        arr1.push(() => i)
+    }
+    const arr2 = arr1.map(x => x())
+    const arr3 = []
+    for(let i=0;i<3;i++){
+        arr3.push(() => i)
+    }
+    const arr4 = arr3.map(x => x())
+    console.log('var:'+arr2.join(',')) //
+    console.log('let:'+arr4.join(','));
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>

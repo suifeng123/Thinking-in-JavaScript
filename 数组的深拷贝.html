@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script type="text/javascript">
+    /**
+     * 方法1：js的slice函数
+     */
+    var arr = ["one","two","three"];
+    var arrto = arr.slice(0);//进行数组深拷贝的操作
+    arrto[1] = "set Map";//进行赋值操作
+    document.writeln("数组的原始值:"+arr+"<br />");
+    document.writeln("数组的新值:"+arrto+"<br />");
+    /**
+     * 方法2：js的contact方法
+     * 连接两个数组，返回一个新的数组，并且返回另一个数组的副本
+     */
+    var arr1 = ["one","two","three"];
+    var arrto1 = arr1.concat();
+    arrto1[1] = "hello world";
+    document.writeln("数组的原始值："+arr1+"<br />");
+    document.writeln("数组的新值:"+arrto1+"<br />");
+
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>
