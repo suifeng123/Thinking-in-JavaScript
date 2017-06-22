@@ -96,11 +96,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlainObject.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PlainObject.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PlainObject.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4888889">
+            <state vertical-scroll-proportion="0.0">
               <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
+              <folding>
+                <element signature="e#0#49#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IEcontent.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/IEcontent.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.9247863">
+              <caret line="30" column="1" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
+              <folding>
+                <element signature="n#!!doc;n#IEContentLoaded#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="callee.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/callee.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
               <folding>
                 <element signature="e#0#49#0" expanded="false" />
               </folding>
@@ -130,6 +154,8 @@
         <option value="$PROJECT_DIR$/Event.js" />
         <option value="$PROJECT_DIR$/Hong.js" />
         <option value="$PROJECT_DIR$/PlainObject.js" />
+        <option value="$PROJECT_DIR$/callee.js" />
+        <option value="$PROJECT_DIR$/IEcontent.js" />
       </list>
     </option>
   </component>
@@ -142,8 +168,8 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="-126" />
+    <option name="y" value="61" />
     <option name="width" value="1382" />
     <option name="height" value="744" />
   </component>
@@ -275,7 +301,7 @@
     <option name="totallyTimeSpent" value="1795000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-126" y="61" width="1382" height="744" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13690476" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -658,10 +684,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/PlainObject.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4888889">
+        <state vertical-scroll-proportion="0.0">
           <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
           <folding>
             <element signature="e#0#49#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/callee.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#49#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IEcontent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9247863">
+          <caret line="30" column="1" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
+          <folding>
+            <element signature="n#!!doc;n#IEContentLoaded#0" expanded="false" />
           </folding>
         </state>
       </provider>
