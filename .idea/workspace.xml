@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb1145f7-b087-4488-8cf0-8b2a77ea2dd6" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/instantiateReactComponent.js" afterPath="$PROJECT_DIR$/instantiateReactComponent.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -136,7 +137,7 @@
         <entry file="file://$PROJECT_DIR$/instantiateReactComponent.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.9247863">
-              <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
+              <caret line="102" column="107" selection-start-line="102" selection-start-column="107" selection-end-line="102" selection-end-column="107" />
               <folding>
                 <element signature="n#!!doc;n#instantiateReactComponent#0" expanded="false" />
               </folding>
@@ -196,8 +197,8 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="228" />
-    <option name="y" value="1" />
+    <option name="x" value="12" />
+    <option name="y" value="5" />
     <option name="width" value="1382" />
     <option name="height" value="744" />
   </component>
@@ -329,7 +330,7 @@
     <option name="totallyTimeSpent" value="1795000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="228" y="1" width="1382" height="744" extended-state="0" />
+    <frame x="12" y="5" width="1382" height="744" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16741072" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -753,7 +754,7 @@
     <entry file="file://$PROJECT_DIR$/instantiateReactComponent.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.9247863">
-          <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
+          <caret line="102" column="107" selection-start-line="102" selection-start-column="107" selection-end-line="102" selection-end-column="107" />
           <folding>
             <element signature="n#!!doc;n#instantiateReactComponent#0" expanded="false" />
           </folding>
