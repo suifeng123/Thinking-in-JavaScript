@@ -104,4 +104,83 @@ Object.assign(ReactDOMTextComponent.prototype,{
             }
         }
     }
+
+    _createOpenTagMarkupAndPutListeners: function(transaction,props){
+        var ret = '<' + this._currentElement.type;
+        //拼凑出属性
+        for(var propKey in props){
+            var propValue = props[propKey];
+
+            if(registrationNameModules.hasOwnProperty(propKey)){
+                //针对当前的节点添加事件代理
+                if(propValue){
+                    enqueuePutListener(this,propKey,propValue,transaction);
+                }
+            }else {
+                if(propKey === STYLE){
+                    if(propValue){
+                        //合并样式
+                        propValue = this._previousStyleCopy = Object.assign({},props.style);
+                    }
+                    propValue = CSSPropertyOperations.createMarkupForStyles(propValue,this);
+                }
+                //创建属性标识
+                var markup = null;
+                if(this._tag != null &&  isCustomComponent(this._tag,props)){
+                    markup = DOMPropertyOperations.createMarkupForProperty(propKey,propValue);
+                }
+
+                if(markup) {
+                    ret += ' '+markup;
+                }
+            }
+        }
+        //对于静态页面，不需要设置react-id,这样可以节省大量字节
+        if(transaction.renderToStaticMarkup){
+            return ret;
+        }
+        //设置react-id
+        if(!this._nativeParent){
+            ret += ' '+ DOMPropertyOperations.createMarkupForRoot();
+        }
+
+        ret += ' '+DOMPropertyOperations.createMarkupForID(this._domID);
+
+        return ret;
+
+
+    }
+
+    _updateDOMProperties: function(lastProps,nextProps,transaction) {
+        var propKey;
+        var styleName;
+        var styleUpdates;
+
+        //当一个旧的属性不在新的属性集合中的时候，需要删除
+        for(propKey in lastProps) {
+            if(nextProps.hasOwnProperty(propKey) || !lastProps.hasOwnProperty(propKey)
+            || lastProps[propKey]==null){
+                continue;
+            }
+            //从DOM上删除不需要的样式
+            if(propKey === STYLE) {
+                var lastStyle = this._previousStyleCopy;
+                for(propKey in lastProps){
+                    if(lastProps.hasOwnProperty(styleName)){
+                        styleUpdates = styleUpdates || {};
+                        styleUpdates[styleName] = '';
+                    }
+                }
+                this._previousStyleCopy = null;
+            }else if(registrationNameModules.hasOwnProperty(propKey)){
+                if(lastProps[propKey]){
+                    // 这里的事件监听的属性需要去掉箭筒，针对当前的节点取消事件代理
+                    deleteListener(this,propKey);
+                }
+            }else if(DOMProperty.isStandardName[propKey]||DOMProperty.isCustomAttribute(propKey)){
+                //从DOM上删除不需要的属性
+                DOMPropertyOperations.deleteValueForProperty(getNode(this),propKey);
+            }
+        }
+    }
 })
