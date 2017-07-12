@@ -251,3 +251,51 @@ updateChildren: function(nextNestedChildrenElements,transaction,context){
         }
     }
 }
+
+
+function makeInsertMarkup(markup,afterNode,toIndex){
+    return {
+        type: ReactMultiChildUpdateTypes.INSERT_MARKUP,
+        content: markup,
+        fromIndex: null,
+        fromNode:null,
+        toIndex:toIndex,
+        afterNode: afterNode
+    };
+}
+
+
+_updateChildren: function(nextNestedChildrenElements,transation,context){
+    var prevChildren = this._renderedChildren;
+    var removeNodes = {};
+    var nextChildren = this._reconcileUpdateChildren(prevChildren,nextNestedChildrenElements,
+    removeNodes,transation,context);
+
+    //如果不存在prevChildren 和 nextChildren,则不做diff处理
+    if(!nextChildren && !prevChildren){
+        return;
+    }
+    var updates = null;
+    var name;
+    //lastIndex 是 prevChildren 中最后的索引，nextIndex 是 nextChildren中每个节点的索引
+    var lastIndex = 0;
+    var nexrIndex = 0;
+    var lastPlaceNode = null;
+
+    for(name in nextChildren){
+        if(!nextChildren.hasOwnProperty(name)){
+            continue;
+        }
+        var prevChild = prevChild && prevChildren[name];
+        var nextChild = nextChildren[name];
+        if(prevChild === nextChild){
+            //移动节点
+            updates = enqueue(
+                updates,
+                this.moveChild(prevChild,lastPlaceNode,nextIndex,lastIndex);
+
+            );
+            lastIndex = Math.max(prevChild._mountIndex,lastIndex);
+        }
+    }
+}

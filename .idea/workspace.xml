@@ -137,7 +137,7 @@
         <entry file="file://$PROJECT_DIR$/instantiateReactComponent.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.9246575">
-              <caret line="248" column="31" selection-start-line="248" selection-start-column="31" selection-end-line="248" selection-end-column="31" />
+              <caret line="297" column="66" selection-start-line="297" selection-start-column="66" selection-end-line="297" selection-end-column="66" />
               <folding>
                 <element signature="n#!!doc;n#instantiateReactComponent#0" expanded="false" />
               </folding>
@@ -754,7 +754,7 @@
     <entry file="file://$PROJECT_DIR$/instantiateReactComponent.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.9246575">
-          <caret line="248" column="31" selection-start-line="248" selection-start-column="31" selection-end-line="248" selection-end-column="31" />
+          <caret line="297" column="66" selection-start-line="297" selection-start-column="66" selection-end-line="297" selection-end-column="66" />
           <folding>
             <element signature="n#!!doc;n#instantiateReactComponent#0" expanded="false" />
           </folding>
