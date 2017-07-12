@@ -184,3 +184,70 @@ Object.assign(ReactDOMTextComponent.prototype,{
         }
     }
 })
+
+ReactComponent.prototype.setState = function(partialState,callback){
+    this.updater.enqueueSetState(this,partialState);
+    if(callback) {
+        this.updater.enqueueCallback(this,callback,'setState');
+    }
+};
+
+
+function enqueueUpdate(component){
+    ensureInjected();
+
+    //如果不处于批量更新模式
+    if(!batchingStrategy.isBatchingUpdates) {
+        batchingStrategy.batchedUpdates(enqueueUpdate,component);
+        return;
+    }
+
+    //如果处于批量更新模式，则将该组件保存在dirtyComponents
+    dirtyComponents.push(component);
+}
+
+var Transaction = require('./Transaction');
+
+//我们自己定义的事务
+var MyTransaction = function() {
+    //...
+
+}
+
+Object.assign(MyTransaction.prototype,Transaction.Mixin,{
+    getTransactionWrappers: function() {
+        return [{
+            initialize: function(){
+                console.log('before method perform');
+            },
+            close: function(){
+                console.log('after method perform');
+            }
+        }];
+    };
+});
+
+var transaction = new MyTransaction();
+var testMethod = function() {
+    console.log('test');
+}
+
+transaction.peform(testMethod);
+
+updateChildren: function(nextNestedChildrenElements,transaction,context){
+    updateDepth++;
+    var errorThrown = true;
+    try{
+        this._updateChildren(nextNestedChildrenElements,transaction,context);
+        errorThrown = false;
+    }finally {
+        updateDepth--;
+        if(!updateDepth){
+            if(errorThrown){
+                clearQueue();
+            }else{
+                processQueue();
+            }
+        }
+    }
+}

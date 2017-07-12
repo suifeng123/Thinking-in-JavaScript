@@ -136,8 +136,8 @@
       <file leaf-file-name="instantiateReactComponent.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/instantiateReactComponent.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9247863">
-              <caret line="183" column="9" selection-start-line="183" selection-start-column="9" selection-end-line="183" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.9246575">
+              <caret line="248" column="31" selection-start-line="248" selection-start-column="31" selection-end-line="248" selection-end-column="31" />
               <folding>
                 <element signature="n#!!doc;n#instantiateReactComponent#0" expanded="false" />
               </folding>
@@ -253,7 +253,7 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Confirmation" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../reactSource/react-book-examples/01" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
@@ -753,8 +753,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/instantiateReactComponent.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9247863">
-          <caret line="183" column="9" selection-start-line="183" selection-start-column="9" selection-end-line="183" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.9246575">
+          <caret line="248" column="31" selection-start-line="248" selection-start-column="31" selection-end-line="248" selection-end-column="31" />
           <folding>
             <element signature="n#!!doc;n#instantiateReactComponent#0" expanded="false" />
           </folding>
