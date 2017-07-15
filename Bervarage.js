@@ -233,5 +233,68 @@ var fn3 = new Chain(function(){
 fn1.setNextSuccessor(fn2).setNextSuccessor(fn3);
 fn1.passRequest();
 
+function Player(name,teamColor) {
+    this.partners = [];//队列列表
+    this.enemies = [];//敌人列表
+    this.state = 'live'; //玩家状态
+    this.name = name;//角色名字
+    this.teamColor = teamColor;//队列颜色
+};
 
+Player.prototype.win = function(){
+    console.log('winner:'+this.name);
+};
+
+Player.prototype.lose = function(){
+    console.log('loser:'+this.name);
+};
+
+Player.prototype.die = function(){
+    //玩家死亡
+    var all_dead = true;
+    this.state = 'dead';
+
+    for(var i= 0,partner;partner = this.partners[i];i++){
+        if(partner.state !== 'dead'){
+            //如果还有一个队友没有死亡,则游戏还未失败
+            all_dead = false;
+            break;
+        }
+    }
+
+    if(all_dead === true){
+        this.close();
+        for(var i= 0,partner;partner=this.partners[i];i++){
+            partner.close();
+        }
+        for(var i= 0,enemy,enemy = this.enemies[i];i++){
+            enemy.win();
+        }
+    }
+};
+
+
+var Plane = function(){}
+
+Plane.prototype.fire = function(){
+    console.log('发射普通子弹');
+};
+
+var MissileDecorator = function(plane) {
+    this.plane = plane;
+};
+
+MissileDecorator.prototype.fire = function(){
+    this.plane.fire();
+    console.log('发射导弹');
+};
+
+var AtomDecorator = function(plane) {
+    this.plane = plane;
+};
+
+AtomDecorator.prototype.fire = function(){
+    this.plane.fire();
+    console.log('发射原子弹');
+}
 
