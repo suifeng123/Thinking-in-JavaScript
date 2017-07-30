@@ -298,3 +298,36 @@ AtomDecorator.prototype.fire = function(){
     console.log('发射原子弹');
 }
 
+var Light = function(){
+    this.state = 'off'; //给电灯设置初始状态off
+    this.button = null;//电灯开关按钮
+};
+
+Light.prototype.init = function(){
+    var button = document.createElement('button');
+    var self = this;
+
+    button.innerHTML = '开关';
+    this.button = document.body.appendChild(button);
+    this.button.onclick = function(){
+        self.buttonWasPressed();
+    }
+};
+
+var googleMap = {
+    show: function(){
+        console.log('开始渲染谷歌地图');
+    }
+};
+
+var baiduMap = {
+    show: function(){
+        console.log('开始渲染百度地图');
+    }
+};
+
+var renderMap = function(map){
+    if(map.show instanceof  Function){
+        map.show();
+    }
+};
