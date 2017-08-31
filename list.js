@@ -25,7 +25,9 @@ function append(data){
 }
 
 function find(element){
-	for(var i = 0 ; i < this.dataStore.length ; i++){\
+	console.log('显示我们想要的数组');
+	console.log(this.dataStore);
+	for(var i = 0 ; i < this.dataStore.length ; i++){
         if(this.dataStore[i] == element){
         	return i;
         }
@@ -51,9 +53,63 @@ function toString(){
 	return this.dataStore;
 }
 
+function clear(){
+	//清空整个数组
+	
+
+}
+
+function contains(){
+
+}
+
+function moveTo(){
+
+}
+
+function front(){
+
+}
+
+function end(){
+
+}
+
+function prev(){
+
+}
+
+function next(){
+
+}
+
+function currPos(){
+
+}
+
+function getElement(){
+
+}
+
+function insert(element,after){
+	console.log(this);
+   //element 表示将要插入的元素
+   //after表示插在哪个元素后
+   var inserPos = this.find(after);
+   if(inserPos > -1){
+   	this.dataStore.splice(inserPos+1,0,element);
+   	++this.listSize;
+   	return true;
+   }
+   return false;
+}
 //写一个测试用例
 var names = new List();
 names.append("123");
 names.append('456');
 names.append("789");
-console.log(names.toString);
+console.log(names.toString());
+names.remove('123');
+console.log(names.toString())
+names.insert('DSAF','456');
+console.log(names.toString());
