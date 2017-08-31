@@ -55,41 +55,55 @@ function toString(){
 
 function clear(){
 	//清空整个数组
+	delete this.dataStore;
+	this.dataStore = [];
+	this.listSize = this.pos = 0;
 	
 
 }
 
-function contains(){
-
+function contains(element){
+	for(var i = 0 ; i < this.dataStore.length ; i++){
+		if(this.dataStore[i] === element){
+			return true;
+		}
+	}
+	return false;
 }
 
-function moveTo(){
-
-}
-
+//遍历数组
 function front(){
-
+	this.pos = 0;
 }
 
 function end(){
-
+	this.pos = this.listSize - 1;
 }
 
 function prev(){
-
+	if(this.pos > 0){
+		--this.pos;
+	}
 }
 
 function next(){
-
+	if(this.pos < this.listSize){
+		++this.pos;
+	}
 }
 
 function currPos(){
+	return this.pos;
+}
 
+function moveTo(position){
+	this.pos = position;
 }
 
 function getElement(){
-
+	return this.dataStore[this.pos];
 }
+
 
 function insert(element,after){
 	console.log(this);
@@ -108,8 +122,13 @@ var names = new List();
 names.append("123");
 names.append('456');
 names.append("789");
+names.append("qqqq");
+names.append("33333");
 console.log(names.toString());
-names.remove('123');
-console.log(names.toString())
-names.insert('DSAF','456');
-console.log(names.toString());
+names.front();
+console.log(names.getElement());
+console.log(names.length())
+//使用迭代器访问
+for(names.front();names.currPos() < names.length();names.next()){
+	console.log(names.getElement());
+}
