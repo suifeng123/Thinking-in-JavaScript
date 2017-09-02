@@ -58,7 +58,30 @@ function preOrder(node){
 		preOrder(node.right);
 	}
 }
+//后序遍历的算法
+function postOrder(node){
+	if(!(node == null)){
+		postOrder(node.left);
+		postOrder(node.right);
+		console.log(node.show());
+	}
+}
 
+function getMin(){
+	var current = this.root;
+	while(!(current.left==null)){ //这里是一个循环
+		current = current.left;
+	}
+	return current.data;
+}
+
+function getMax(){
+     var current = this.root;
+     while(!(current.right == null)){
+     	current = current.right;
+     }
+     return current.data;
+}
 //下面是一个测试用例
 var nums = new BST();
 nums.insert(23);
@@ -68,7 +91,3 @@ nums.insert(37);
 nums.insert(3);
 nums.insert(99);
 nums.insert(22);
-console.log('中根序遍历的结果如下');
-inOrder(nums.root);
-console.log('先序遍历的结果如下');
-preOrder(nums.root);
