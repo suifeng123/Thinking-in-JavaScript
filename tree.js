@@ -52,7 +52,11 @@ function inOrder(node){
 }
 
 function preOrder(node){
-	
+	if(!(node==null)){
+		console.log(node.show()+" ");
+		preOrder(node.left);
+		preOrder(node.right);
+	}
 }
 
 //下面是一个测试用例
@@ -66,3 +70,5 @@ nums.insert(99);
 nums.insert(22);
 console.log('中根序遍历的结果如下');
 inOrder(nums.root);
+console.log('先序遍历的结果如下');
+preOrder(nums.root);
