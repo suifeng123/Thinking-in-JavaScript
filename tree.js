@@ -82,6 +82,54 @@ function getMax(){
      }
      return current.data;
 }
+
+function find(data){
+	var current = this.root;
+	while(current != null){
+		if(current.data == data){
+			return current;
+		}else if(data<current.data){
+			current = current.left;
+		}else{
+			current = current.right;
+		}
+	}
+	return null;
+}
+
+function remove(data){
+	root = removeNode(this.root,data);
+}
+
+function removeNode(node,data){
+	if(node == null){
+		return null;
+	}
+	if(data == node.data){
+		//没有子节点的节点
+		if(node.left == null && node.right == null){
+			return null;
+		}
+		//没有左子节点的节点
+		if(node.left == null){
+			return node.right;
+		}
+		//没有右子节点的节点
+		if(node.right == null){
+			return node.left;
+		}
+		//有两个节点的节点
+		var tempNode = getSmallest(node.right);
+		node.data = tempNode.data;
+		node.right = removeNode(node.right,tempNode.data);
+	}else if(data < node.data){
+		node.left = removeNode(node.left,data);
+	}
+	eles{
+		node.right = removeNode(node.right,data);
+		return node;
+	}
+}
 //下面是一个测试用例
 var nums = new BST();
 nums.insert(23);
