@@ -48,3 +48,51 @@ nums.shellsort1();
 console.log('希尔排序后');
 console.log(nums);
 
+
+function mergeSort(arr){
+	if(arr.length <　2){
+		return;
+	}
+
+	var  step = 1;
+	var left,right;
+	while(step < arr.length){
+		left = 0;
+		right = step;
+		while(right + step <= arr.length){
+			mergeArrays(arr,left,left+step,right,right+step);
+		}
+		step = step *2;
+	}
+}
+
+function mergeArrays(arr,startLeft,stopLeft,startRight,stopRight){
+	var rightArr = new Array(stopRight - startRight + 1);
+	var leftArr = new Array(stopLeft - startLeft +1);
+	k = startRight;
+	for(var i = 0 ; i < (rightArr.length - 1);++i){
+		rightArr[i] = arr[k];
+		++k;
+	}
+
+	k = startLeft;
+	for(var i = 0 ; i < (leftArr.length -1);++i){
+		leftArr[i] = arr[k];
+		++k;
+	}
+	rightArr[rightArr.length - 1] = Infinity;  //哨兵数值
+	leftArr[leftArr.length - 1] = Infinity; //哨兵值
+	var m = 0;
+	var n = 0;
+	for(var k = startLeft; k < stopRight ; ++k){
+		if(leftArr[m] <= rightArr[n]){
+			arr[k] = leftArr[m];
+			m++;
+		}else{
+			arr[k] = rightArr[n];
+			n++;
+		}
+	}
+	console.log('左边的数组'+leftArr);
+	console.log('右边的数组'+rightArr);
+}
