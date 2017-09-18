@@ -1,0 +1,33 @@
+<DOCTYPE html>
+<html>
+<head>
+<title>画图Canvas</title>
+</head>
+<body>
+<canvas id="mo" width="600" height="360"
+style="border:1px solid black"></canvas>
+<script type="text/javascript">
+   function skew(context,angle){
+   	//借助于transform() 方法实现倾斜变幻
+   	 context.transform(1,0,-Math.tan(angle),1,0,0);
+   }
+  //获取canvas 元素上的dom元素
+  var canvas = document.getElementById('mo');
+  //获取canvas 上对象
+  var ctx = canvas.getContext('2d');
+  //进行填充颜色
+  ctx.fillStyle = 'rgba(255,0,0,0.3)';
+  //绘制矩形
+  ctx.translate(360,5);
+  for(var i = 0; i < 30; i++){
+  	//平移坐标
+  	ctx.translate(50,30);
+  	//缩放坐标系统
+  	ctx.scale(0.93,0.93);
+  	//倾斜变幻
+  	skew(ctx,Math.PI/10);
+  	ctx.fillRect(0,0,150,75);
+  }
+</script>
+</body>
+</html>
