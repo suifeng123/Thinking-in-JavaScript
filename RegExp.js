@@ -3,10 +3,12 @@ var i;
 
 for(var i = 0; i < 10 ; i++){
 	re = /cat/g;
-	console.log(re.test('catastorehe'));
+	re.test('catastorehe');
+	//console.log(re.test('catastorehe'));
 }
 
 for(i=0; i< 10; i++){
 	re = new RegExp("cat","g");
-	console.log(re.test('catastorehe'));
+	re.test('catastorehe');
+	//console.log(re.test('catastorehe'));
 }
