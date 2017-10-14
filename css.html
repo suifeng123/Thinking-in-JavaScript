@@ -3,21 +3,60 @@
 <head>
 	<title>线性过度</title>
 	<style type="text/css">
-     #pie {
-     	    width: 100px;
-     	    height: 100px;
-     	    box-shadow: 2px 3px 4px rgba(0,0,0,0.5);
-     	}
+     /*
+     具有data-vegetable 属性的所有元素
+     将被给予绿色的文本颜色
+      */
+     [data-vegetable] {
+        color: green;
+     }
+     /*
+     将具有data-vegetable 属性切属性刚好是“liquid”的所有元素
+     将被赋予金色背景
+      */
+     [data-vegetable="liquid"]{
+        background-color: blue;
+     }
+     /*
+     将具有data-vegetable 属性并且属性包含"splicy"的所有元素
+     即使某元素的该属性还包含其他属性，都会被赋予红色
+      */
+     [data-vegetable~="spicy"]{
+        color:red;
+     }
+     /*语言选择经典用法*/
+     [lang|=fr]{
+        font-weight: bold;
+     }
+     /*
+     具有data-vegetable属性含有值“not spicy”的所有元素，都会变回绿色
+      */
+     [data-vegetable*="not spicy"]{
+        color:green;
+     }
+     /*
+     具有data-vegetable属性以“kg”结尾的所有元素
+      */
+     [data-quantity$="kg"]{
+        font-weight:bold;
+     }
+     /*具有data-vegatable属性并且以optional开头的所有属性*/
+     [data-quantity^="optional"]{
+        opacity: 0.5;
+     }
 	</style>
-	<script type="text/javascript">
-        var f1 = fucntion(){
-        	console.log('this is  a method');
-            console.log('asfsdaf');
-        }
-	</script>
 </head>
 <body>
- <div id="pie">
- </div>
+ 我的食谱配料: <i lang="fr-FR">Poulet basquaise</i>
+<ul>
+  <li data-quantity="1kg" data-vegetable>Tomatoes</li>
+  <li data-quantity="3" data-vegetable>Onions</li>
+  <li data-quantity="3" data-vegetable>Garlic</li>
+  <li data-quantity="700g" data-vegetable="not spicy like chili">Red pepper</li>
+  <li data-quantity="2kg" data-meat>Chicken</li>
+  <li data-quantity="optional 150g" data-meat>Bacon bits</li>
+  <li data-quantity="optional 10ml" data-vegetable="liquid">Olive oil</li>
+  <li data-quantity="25cl" data-vegetable="liquid">White wine</li>
+</ul>
 </body>
 </html>
