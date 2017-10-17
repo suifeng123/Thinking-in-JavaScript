@@ -3,31 +3,17 @@
 <head>
 	<title>线性过度</title>
 	<style type="text/css">
-      <div>
-        width: 60px;
-        height: 60px;
-        border: 20px solid rgba(0,0,0,0.5);
-        padding: 20px;
-        margin: 20px 0;
-
-        background-size: 140px;
-        background-position: center;
-        background-image: url('https://mdn.mozillademos.org/files/11947/ff-logo.png');
-        background-color: gold;
-    }
-
-    .default {background-clip:border-box;}
-    .padding-box {background-clip: padding-box;}
-    .content-box { background-clip:content-box;}
-      </div>
-    }
-    }
-    }
+      #max {
+        height: 400px;
+        width: 400px;
+        background: #58a; /*回退样式*/
+        background: linear-gradient(to left bottom,
+            transparent 50%,rgba(0,0,0,.4) 0) no-repeat 100% 0 / 2em 2em,
+                    linear-gradient(-135deg,transparent 1.5em,#58a 0);
+      }
  	</style>
 </head>
 <body>
- <div class="default"></div>
- <div class="padding-box"></div>
- <div class="content-box"></div>
+ <div id="max"></div>
 </body>
 </html>

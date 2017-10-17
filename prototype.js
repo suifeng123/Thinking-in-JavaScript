@@ -23,3 +23,8 @@ console.log(Person.prototype.isPrototypeOf(person2));
 console.log('getPrototypeOf');
 console.log(Object.getPrototypeOf(person1) == Person.prototype);
 console.log(Object.getPrototypeOf(person2) === Person.prototype);
+
+//判断一个属性在原型中，还是在实例中
+function hasPrototypeProperty(object,name){
+	return !object.hasOwnProperty(name) && (name in object);
+}
