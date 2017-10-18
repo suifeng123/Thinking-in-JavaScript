@@ -21,6 +21,7 @@ function List(){
 }
 
 function append(data){
+  //添加append方法
 	this.dataStore[this.listSize++] = data;
 }
 
