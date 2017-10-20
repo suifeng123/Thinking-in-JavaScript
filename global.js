@@ -7,7 +7,7 @@ global.jQuery = Object.create({});
    var mod = function(includes){
    	if(includes) this.include(includes);
    };
-
+   //提供代理需求
    mod.fn = mod.prototype;
 
    mod.fn.proxy = function(func){
