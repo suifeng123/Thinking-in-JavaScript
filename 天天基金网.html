@@ -38,7 +38,37 @@ overflow:hidden;z-index:65535;position:relative;display:block;">
  </div>
  <!--添加最后一个图片 -->
    <div id="cls_btn" style="position:absolute;top:357px;right:0px;text-align:right;z-index:1000;width:70px;height:93px;" >
+    <img src="http://g1.dfcfw.com/g1/201710/20171016070038.gif" style="cursor:pointer;width:70px;height:93px;" onclick="close_main_pd(this.parentNode,event)">
+   </div>
+   <!--添加真正的body选项 -->
+   <div id="body">
+     <div class="whiteBG">
+       <!--header start 顶部 -->
+       <div class="wrapper F_header">
+         <div class="wrapper_min">
+           <div class="ui-clear header-nav">
+                <div class="ui-left"></div>
+                <div class="ui-right"></div>
+           </div>
+         </div>
+       </div>
+       <!--header end -->
+     </div>
+
    </div>
 </div>
+<script type="text/javascript">
+  function close_main_pd(clickNode,event){
+  	//提供一种功能能够关闭其父级的div
+  	//在这个事件中传入两个参数，第一个参数是等待关闭的node节点，event是这个事件的
+  	//名称
+  	
+  	//获取器父级的节点并关闭这个节点
+  	var parent = clickNode.parentNode; //获取它的父节点
+     console.log(parent.style);
+     parent.style.display = "none";
+  	
+  }
+</script>
 </body>
 </html>
