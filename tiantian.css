@@ -7,3 +7,12 @@
 .lt-ie7{
 	
 }
+html {
+	color:#333;
+	-webkit-text-size-adjust:100%;
+	-ms-text-size-adjust:100%;
+}
+html,input,select,textarea {
+	font-size:100%;
+	background: #fff;
+}
