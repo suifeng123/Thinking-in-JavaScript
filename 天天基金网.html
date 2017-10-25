@@ -85,20 +85,70 @@ overflow:hidden;z-index:65535;position:relative;display:none;">
                              </div>
                          </a>
                       </li>
-
+                      <li class="head-item">免费开户</li>
+                       <li class="head-item">|</li>
+                      <li class="head-item">手机买基金</li>
                    </ul>
                 </div>
                 <div class="ui-right">
                     <ul class="headRight">
-                        <li class="head-item">东方财富网</li>
-                        <li class="dropdown head-item droplist open">基金交易
-                        <div class="dropdown-menu"></div></li>
+                        <li class="head-item">
+                            <a href="http://www.baidu.com">东方财富网</a></li>
+                        <li class="dropdown head-item droplist" onmouseover="displaySomething1()" onmouseout="hideSomething1()">
+                            <span class="blank blankL">|</span>
+                            <a href="http://www.baidu.com" class="red header-icon pr20">
+                            基金交易
+                              <span class="icon dropdown-icon"></span>
+                            </a>
+                            <span class="blank blankR">|</span>
+                        <div class="dropdown-menu">
+                            <!--下拉显示的选项 -->
+                            <ul>
+                                <li>我的资产</li>
+                                <li>活期宝</li>
+                                <li>定期宝</li>
+                                <li>指数报</li>
+                                <li>买基金</li>
+                                <li>基金定投</li>
+                                <li>基金排行</li>
+                            </ul>
+                        </div>
+                        </li>
+                        <li class="head-item">
+                            产品导购
+                            <span class="blank blankR">|</span>
+                        </li>
+                        <li class="head-item">
+                            自选基金
+                            <span class="blank blankR">|</span>
+                        </li>
+                        <li class="head-item">
+                            vip俱乐部
+                            <span class="blank blankR">|</span>
+                        </li>
+                        <li class="head-item">
+                            帮助中心
+                            <span class="blank blankR">|</span>
+                        </li>
+                        <li class="dropdown head-item webMap">
+                            <a href="javascript:void(0)" target="_self"
+                               class="header-icon p120 pr20">网站导航</a>
+                        </li>
+
+
                     </ul>
                 </div>
            </div>
          </div>
        </div>
        <!--header end -->
+         <!--adver 广告位 -->
+         <div class="wrapper">
+             <div class="wrapper_min">
+                 <div class="lazy fund_hei60" data-w="1000" data-h="60" data-url="http://same.eastmoney.com/s?z=eastmoney&amp;c=1284&amp;op=1"><iframe frameborder="0" marginwidth="0" marginheight="0" scrolling="no" width="1000" height="60" src="http://same.eastmoney.com/s?z=eastmoney&amp;c=1284&amp;op=1"></iframe></div>
+             </div>
+         </div>
+         <!--广告位结束 -->
      </div>
 
    </div>
@@ -119,12 +169,22 @@ overflow:hidden;z-index:65535;position:relative;display:none;">
         console.log("展示必要的细腻");
         document.getElementsByClassName("dropdown-menu")[0].style.display = "block";
     }
-
+     function  displaySomething1(){
+        document.getElementsByClassName("dropdown-menu")[1].style.display = "block";
+     }
     function hideSomething(){
         //单鼠标移出去的时候触发一个
         console.log("当鼠标移动出去的时候触发的事件");
         document.getElementsByClassName('dropdown-menu')[0].style.display = "none";
     }
+
+  function hideSomething1(){
+      //单鼠标移出去的时候触发一个
+      console.log("当鼠标移动出去的时候触发的事件");
+      document.getElementsByClassName('dropdown-menu')[1].style.display = "none";
+  }
+
+
 
 </script>
 </body>

@@ -241,3 +241,18 @@ a,button {
 	color:#f40;
 }
 
+.header-nav .head-item .droplist {
+	width: 80px;
+}
+
+.header-nav .head-item .dropdown {
+	border: 1px solid #f5f5f5;
+	border-bottom:0;
+	height:29px;
+	line-height:29px;
+}
+
+.head-item .head-item .webMap{
+	width:88px;
+}
+

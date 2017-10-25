@@ -28,7 +28,7 @@
     <favorites_list name="Thinking-in-javaScript" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.7751572">
+    <splitter split-orientation="vertical" split-proportion="0.5990566">
       <split-first>
         <leaf>
           <file leaf-file-name="gaoji.js" pinned="false" current-in-tab="false">
@@ -130,9 +130,13 @@
           <file leaf-file-name="天天基金网.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/天天基金网.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.8450704">
-                  <caret line="94" column="51" selection-start-line="94" selection-start-column="51" selection-end-line="94" selection-end-column="51" />
-                  <folding />
+                <state vertical-scroll-proportion="0.7904762">
+                  <caret line="147" column="321" selection-start-line="147" selection-start-column="321" selection-end-line="147" selection-end-column="321" />
+                  <folding>
+                    <element signature="n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+                    <element signature="n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+                    <element signature="n#li#1;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -154,8 +158,8 @@
           <file leaf-file-name="tiantian.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/tiantian.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-1.5575222">
-                  <caret line="214" column="22" selection-start-line="214" selection-start-column="22" selection-end-line="214" selection-end-column="22" />
+                <state vertical-scroll-proportion="0.21428572">
+                  <caret line="252" column="1" selection-start-line="252" selection-start-column="1" selection-end-line="252" selection-end-column="1" />
                   <folding />
                 </state>
               </provider>
@@ -419,7 +423,15 @@
     <option name="LAST_COMMIT_MESSAGE" value="提交jacaScript" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/天天基金网.html</url>
+          <line>60</line>
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -806,9 +818,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/天天基金网.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8450704">
-          <caret line="94" column="51" selection-start-line="94" selection-start-column="51" selection-end-line="94" selection-end-column="51" />
-          <folding />
+        <state vertical-scroll-proportion="0.7904762">
+          <caret line="147" column="321" selection-start-line="147" selection-start-column="321" selection-end-line="147" selection-end-column="321" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#li#1;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
