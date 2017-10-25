@@ -66,7 +66,7 @@ article, aside, blockquote, body, button, code, dd, details, div, dl, dt, fields
 	content:'';
 }
 .ui-clear:after, .ui-grid-row:after {
-    /* font-size: 0; */
+     font-size: 0;
     visibility: hidden;
     clear: both;
 }
@@ -255,4 +255,112 @@ a,button {
 .head-item .head-item .webMap{
 	width:88px;
 }
+
+.nav-tab {
+	padding: 10px 0;
+	height: 70px;
+}
+
+.ui-clear{
+	zoom: 1;
+}
+
+.nav-tab li {
+	float:left;
+}
+
+.nav-tab li.jz a {
+	background-position: 0 -70px;
+	margin-left: 11px;
+}
+
+.ui-text-gray-light a:link, .ui-text-gray-light a:visited {
+	color: #666;
+	text-decoration: none;
+}
+.nav-tab li a {
+	_font-size: 12px;
+}
+.nav-tab li a {
+	display: block;
+	width: 56px;
+	height: 14px;
+	line-height: 14px;
+	background-image: url(http://j5.dfcfw.com/image/201508/20150828174355.png);
+	background-repeat: no-repeat;
+	background-color: #fff;
+	margin-top: 16px;
+	font-size: 13px;
+	font-weight: bold;
+	text-align: center;
+	padding-top: 40px;
+}
+
+.nav-tab li.gz a{
+	background-position:-60px -70px;
+	margin-left:21px;
+	display: block;
+	width: 56px;
+	height:14px;
+	line-height:14px;
+	background-image: url('http://j5.dfcfw.com/image/201508/20150828174355.png');
+	background-repeat: no-repeat;
+	background-color: #fff;
+	margin-top:16px;
+	font-size:13px;
+	font-weight:bold;
+	text-align:center;
+	padding-top: 40px;
+}
+.nav-tab li.ph a{
+	background-position:-60px -70px;
+	margin-left:21px;
+	display: block;
+	width: 56px;
+	height:14px;
+	line-height:14px;
+	background-image: url('http://j5.dfcfw.com/image/201508/20150828174355.png');
+	background-repeat: no-repeat;
+	background-color: #fff;
+	margin-top:16px;
+	font-size:13px;
+	font-weight:bold;
+	text-align:center;
+	padding-top: 40px;
+}
+
+.nav-tab li.my a{
+	 background-position:-60px -70px;
+	 margin-left:21px;
+	 display: block;
+	 width: 56px;
+	 height:14px;
+	 line-height:14px;
+	 background-image: url('http://j5.dfcfw.com/image/201508/20150828174355.png');
+	 background-repeat: no-repeat;
+	 background-color: #fff;
+	 margin-top:16px;
+	 font-size:13px;
+	 font-weight:bold;
+	 text-align:center;
+	 padding-top: 40px;
+ }
+
+.nav-tab li.ba a{
+	background-position:-60px -70px;
+	margin-left:21px;
+	display: block;
+	width: 56px;
+	height:14px;
+	line-height:14px;
+	background-image: url('http://j5.dfcfw.com/image/201508/20150828174355.png');
+	background-repeat: no-repeat;
+	background-color: #fff;
+	margin-top:16px;
+	font-size:13px;
+	font-weight:bold;
+	text-align:center;
+	padding-top: 40px;
+}
+
 
