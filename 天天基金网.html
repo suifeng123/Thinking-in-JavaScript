@@ -55,9 +55,46 @@ overflow:hidden;z-index:65535;position:relative;display:none;">
                       <li class="head-item">
                         <a href="javascript:void(0);" target="_self" id="setHome">设为首页</a>
                       </li>
+                      <li class="head-item">
+                          <a href="javascript:void(0);" target="_self" id="addFavor">加入收藏</a>
+                      </li>
+                      <li class="head-item" onmouseover="displaySomething()" onmouseout="hideSomething()">
+                         <a href="dropdown head-item login" id="loginTTJJ">
+                             <span class="blank blankL">|</span>
+                             <!--书写一个连接的操作 -->
+                             <a herf="javascript:void(0);" target="_self" class="red header-icon pr20">
+                               请登录
+                                 <span class="icon dropdown-icon"></span>
+                             </a>
+                             <span class="blank blankR blankZ">|</span>
+                             <div class="dropdown-menu">
+                                <div class="content">
+                                   <h3>天天基金交易平台</h3>
+                                    <a href="https://login.1234567.com.cn/login" class="btn">
+                                        基金交易<br />
+                                        <span>申购优惠</span>
+                                    </a>
+                                    <a href="https://register.1234567.com.cn/reg/step1" class="btn">
+                                        免费开户<br />
+                                        <span>10秒钟迅速开户</span>
+                                    </a>
+                                    <p>
+                                        产品<b>多</b>交易<b>快</b>服务<b>好</b>
+                                    </p>
+                                </div>
+                             </div>
+                         </a>
+                      </li>
+
                    </ul>
                 </div>
-                <div class="ui-right"></div>
+                <div class="ui-right">
+                    <ul class="headRight">
+                        <li class="head-item">东方财富网</li>
+                        <li class="dropdown head-item droplist open">基金交易
+                        <div class="dropdown-menu"></div></li>
+                    </ul>
+                </div>
            </div>
          </div>
        </div>
@@ -77,6 +114,18 @@ overflow:hidden;z-index:65535;position:relative;display:none;">
      parent.style.display = "none";
   	
   }
+    function displaySomething(){
+        //当鼠标移动上去就会显示
+        console.log("展示必要的细腻");
+        document.getElementsByClassName("dropdown-menu")[0].style.display = "block";
+    }
+
+    function hideSomething(){
+        //单鼠标移出去的时候触发一个
+        console.log("当鼠标移动出去的时候触发的事件");
+        document.getElementsByClassName('dropdown-menu')[0].style.display = "none";
+    }
+
 </script>
 </body>
 </html>

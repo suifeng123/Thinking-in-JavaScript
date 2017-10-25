@@ -58,6 +58,19 @@ article, aside, blockquote, body, button, code, dd, details, div, dl, dt, fields
 	zoom: 1;
 }
 
+.ui-clear:after {
+	display: block;
+	height: 0;
+}
+.ui-clear:after,.ui-grid-row:after{
+	content:'';
+}
+.ui-clear:after, .ui-grid-row:after {
+    /* font-size: 0; */
+    visibility: hidden;
+    clear: both;
+}
+
 .ui-left {
 	float: left;
 }
@@ -76,11 +89,13 @@ ol,ul {
 
 ul,menu,dir{
 	display: block;
+	/*
 	-webkit-margin-before:1em;
 	-webkit-margin-after:1em;
 	-webkit-margin-start:0px;
 	-webkit-margin-end:0px;
 	-webkit-padding-start: 40px;
+	*//*屏蔽这些不必要的属性 --*/
 }
 
 .head-nav .head-item {
@@ -104,6 +119,25 @@ ul,menu,dir{
     position: relative;
     z-index: 9999;
 }
+
+.head-nav .head-item span.blankL{
+	left: -2px;
+}
+
+.head-nav .head-item span.blank {
+	position:absolute;
+	top:0;
+	color:#d4d4d4;
+}
+
+.header-nav .head-item span.blankR {
+	right: -2px;
+}
+
+.header-nav .head-item span.blankZ{
+	color:#f5f5f5;
+}
+
 
 .header-nav .head-item a:link, .header-nav .head-item a:visited{
 	color:#666;
@@ -129,3 +163,81 @@ a {
 a,button {
 	outline:0;
 }
+
+.header-nav .head-item .red, .header-nav .head-item a.red:link,.header-nav .head-item a.red:visited{
+	color:#f40;
+}
+
+.header-nav .head-item a:link,.header-nav .head-item a:visited {
+	text-decoration: none;
+}
+
+.header-nav .head-item .pr20 {
+	padding-right: 20px;
+}
+
+.header-nav .head-item .header-icon {
+	position: relative;
+}
+
+.header-nav .head-item a{
+	padding: 0 7px;
+}
+
+
+.header-nav .head-item .dropdown-icon {
+	background-position:0 0;
+	width:6px;
+	height:3px;
+	top: 5px;
+	right:8px;
+}
+
+.header-nav .head-item .icon {
+	background-image: url('http://j5.dfcfw.com/image/201702/20170208112005.png');
+	display:block;
+	position:absolute;
+}
+
+.head-item .dropdown-menu {
+	display:none;
+	position:absolute;  /*此处是绝对定位，是相对于器父级中非static的元素进行定位 */
+	top: 29px;
+	left:-1px;
+	border: 1px solid #d4d4d4;
+	z-index:99;
+}
+
+.dropdown-menu .content {
+	margin: 10px 0;
+	background:#f5fafe;
+	width:232px;
+	text-align: center;
+}
+
+.content a.btn:link,.content a.btn:visited{
+	color:#fff;
+}
+
+.content a.btn{
+	margin: 5px auto;
+	display:block;
+	width:160px;
+	height:36px;
+	background: #3a5e95;
+	line-height:18px;
+	font-size:14px;
+	text-align:center;
+	font-weight:bold;
+	padding:4px 0 2px;
+}
+
+.content p {
+	text-align: center;
+}
+
+.content p b {
+	font-size:14px;
+	color:#f40;
+}
+
