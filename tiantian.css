@@ -82,3 +82,50 @@ ul,menu,dir{
 	-webkit-margin-end:0px;
 	-webkit-padding-start: 40px;
 }
+
+.head-nav .head-item {
+	float:left;
+	height: 30px;
+	line-height:30px;
+	position:relative;
+	z-index:9999;
+}
+
+.header-nav .head-item.dropdown {
+    border: 1px solid #f5f5f5;
+    border-bottom: 0;
+    height: 29px;
+    line-height: 29px;
+}
+.header-nav .head-item {
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    position: relative;
+    z-index: 9999;
+}
+
+.header-nav .head-item a:link, .header-nav .head-item a:visited{
+	color:#666;
+	text-decoration: none;
+}
+
+.header-nav .head-item a{
+	padding: 0 7px;
+}
+
+.header-nav .head-item a{
+	white-space: nowrap;
+}
+
+a:link,a:visited{
+	color:#039;
+}
+
+a {
+	background-color: transparent;
+}
+
+a,button {
+	outline:0;
+}

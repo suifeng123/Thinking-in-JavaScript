@@ -20,12 +20,12 @@
 	<!--用来告诉搜索机器人这个网站主要是干嘛的 -->
 	<meta name="description" content="天天基金网,1234567,网上交易，基金买卖，基金申购，基金赎回，买基金，卖基金，活期宝，基金怎么买，基金超市，热销基金，基金主题，高收益基金，固定收益基金，基金净值,基金网,基金交易,免费开户,企业开户，开放式基金,封闭式基金,每日基金净值,基金净值估算，基金公司,净值实时走势,基金行情,基金折价率,基金吧,基金学校,基金评级,基金代码,财富节,1218财富节,加息券,免费领红包,年终奖,理财节,高端理财,基金理财,财富管理">
 	<meta name="viewport" content="width=1024">
-	<style type="text/css" src="tiantian.css"></style>
+	<link rel="Stylesheet" href="tiantian.css">
 </head>
 <body>
 <!--暂时把这个图片的高度设置为auto自动-->
-<div style="width:1000px;margin-left:auto;margin-right:auto;
-overflow:hidden;z-index:65535;position:relative;display:block;">
+<div style="width:1000px;height:1px;margin-left:auto;margin-right:auto;
+overflow:hidden;z-index:65535;position:relative;display:none;">
  <!--添加一个图片 -->
  <div style="width:1000px;height:450px;border:none;padding:0px;margin:0px;">
   <a href="http://www.baidu.com" target=[TARGET]>
@@ -40,14 +40,23 @@ overflow:hidden;z-index:65535;position:relative;display:block;">
    <div id="cls_btn" style="position:absolute;top:357px;right:0px;text-align:right;z-index:1000;width:70px;height:93px;" >
     <img src="http://g1.dfcfw.com/g1/201710/20171016070038.gif" style="cursor:pointer;width:70px;height:93px;" onclick="close_main_pd(this.parentNode,event)">
    </div>
-   <!--添加真正的body选项 -->
+  
+</div>
+
+ <!--添加真正的body选项 -->
    <div id="body">
      <div class="whiteBG">
        <!--header start 顶部 -->
        <div class="wrapper F_header">
          <div class="wrapper_min">
            <div class="ui-clear header-nav">
-                <div class="ui-left"></div>
+                <div class="ui-left">
+                   <ul class="headLeft">
+                      <li class="head-item">
+                        <a href="javascript:void(0);" target="_self" id="setHome">设为首页</a>
+                      </li>
+                   </ul>
+                </div>
                 <div class="ui-right"></div>
            </div>
          </div>
@@ -56,7 +65,6 @@ overflow:hidden;z-index:65535;position:relative;display:block;">
      </div>
 
    </div>
-</div>
 <script type="text/javascript">
   function close_main_pd(clickNode,event){
   	//提供一种功能能够关闭其父级的div
