@@ -1,4 +1,6 @@
+<!--这是一条注释 -->
 <!DOCTYPE html>
+<!-- 这是另一条注释 -->
 <html>
 <head>
 	<title>添加节点</title>
@@ -11,10 +13,12 @@
   <li>Go</li>
  </ul>
  <script type="text/javascript">
-    var someNode = document.getElementByTagName('ul');
-    var returnNode = someNode.appendChild('<li>王圣文</li>');
-    console.log(returnNode == '<li>王圣文</li>');
-    console.log(someNode.lastChild == newNode);
+    var someNode = document.getElementsByTagName('ul')[0];
+    console.log(someNode.childNodes);
+
+    var html = document.documentElement;
+    console.log(html === document.childNodes[0]);
+
  </script>
 </body>
 </html>
