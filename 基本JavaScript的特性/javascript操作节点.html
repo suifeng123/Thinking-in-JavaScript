@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>添加节点</title>
+</head>
+<body>
+ <ul>
+  <li>Java</li>
+  <li>JavaScript</li>
+  <li>Python</li>
+  <li>Go</li>
+ </ul>
+ <script type="text/javascript">
+    var someNode = document.getElementByTagName('ul');
+    var returnNode = someNode.appendChild('<li>王圣文</li>');
+    console.log(returnNode == '<li>王圣文</li>');
+    console.log(someNode.lastChild == newNode);
+ </script>
+</body>
+</html>
