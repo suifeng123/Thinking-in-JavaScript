@@ -6,10 +6,11 @@
 	<title>添加节点</title>
 </head>
 <body>
- <p>The current date and time is :
-   <script type="text/javascript">
-      document.write("<strong>"+(new Date()).toString()+"</strong>")
-   </script>
- </p>
+ <div id="myDIV"></div>
+ <script type="text/javascript">
+    var div = document.getElementById('myDIV');
+    console.log(div.tagName);
+    console.log(div.tagName == div.nodeName);
+ </script>
 </body>
 </html>
