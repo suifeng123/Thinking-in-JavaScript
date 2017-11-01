@@ -1,0 +1,250 @@
+<!--写一个天天基金网的网页 -->
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="lt-ie9"><![endif]-->
+<!--[if gt IE 8]><html><!-->
+<html class=".html">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>天天基金网(1234567.com.cn) --首批独立基金销售机构-- 东方财富网旗下基金平台！</title>
+	<meta http-equiv="Cache-Control" content="no-cache"><!--不缓存 -->
+	<meta http-equiv="Expires" content="-1">
+	<meta http-equiv="refresh" content="3600"> <!--一个小时刷新一次 -->
+	<meta name="viewport" content="width=device-width,initial-scale=1"><!--。移动版的 Safari 浏览器最新引进了 viewport 这个 meta tag，让网页开发者来控制 viewport 的大小和缩放，其他手机浏览器也基本支持。-->
+	<!--用来告诉搜索引擎搜索关键词 -->
+	<meta name="keywords" content="天天基金网,1234567,网上交易，基金买卖，基金申购，基金赎回，买基金，卖基金，活期宝，基金怎么买，基金超市，热销基金，基金主题，高收益基金，固定收益基金，基金净值,基金网,基金交易,免费开户,企业开户，开放式基金,封闭式基金,每日基金净值,基金净值估算，基金公司,净值实时走势,基金行情,基金折价率,基金吧,基金学校,基金评级,基金代码,财富节,1218财富节,加息券,免费领红包,年终奖,理财节,高端理财,基金理财,财富管理">
+	<!--用来告诉搜索机器人这个网站主要是干嘛的 -->
+	<meta name="description" content="天天基金网,1234567,网上交易，基金买卖，基金申购，基金赎回，买基金，卖基金，活期宝，基金怎么买，基金超市，热销基金，基金主题，高收益基金，固定收益基金，基金净值,基金网,基金交易,免费开户,企业开户，开放式基金,封闭式基金,每日基金净值,基金净值估算，基金公司,净值实时走势,基金行情,基金折价率,基金吧,基金学校,基金评级,基金代码,财富节,1218财富节,加息券,免费领红包,年终奖,理财节,高端理财,基金理财,财富管理">
+	<meta name="viewport" content="width=1024">
+	<link rel="Stylesheet" href="tiantian.css">
+</head>
+<body>
+<!--暂时把这个图片的高度设置为auto自动-->
+<div style="width:1000px;height:1px;margin-left:auto;margin-right:auto;
+overflow:hidden;z-index:65535;position:relative;display:none;">
+ <!--添加一个图片 -->
+ <div style="width:1000px;height:450px;border:none;padding:0px;margin:0px;">
+  <a href="http://www.baidu.com" target=[TARGET]>
+     <img src="http://g1.dfcfw.com/g1/201710/20171016070024.jpg" style="width:1000px;height:450px;border:none;">
+  </a>
+ </div>
+ <!--添加另一个关于广告的图片的标志-->
+ <div style="display:block;position:absolute;width:29px;height:16px;line-height:16px;bottom:0px;left:0px;">
+   <img src="http://minisite.i.adsame.com/images/pudi.png" border="0">
+ </div>
+ <!--添加最后一个图片 -->
+   <div id="cls_btn" style="position:absolute;top:357px;right:0px;text-align:right;z-index:1000;width:70px;height:93px;" >
+    <img src="http://g1.dfcfw.com/g1/201710/20171016070038.gif" style="cursor:pointer;width:70px;height:93px;" onclick="close_main_pd(this.parentNode,event)">
+   </div>
+  
+</div>
+
+ <!--添加真正的body选项 -->
+   <div id="body">
+     <div class="whiteBG">
+       <!--header start 顶部 -->
+       <div class="wrapper F_header">
+         <div class="wrapper_min">
+           <div class="ui-clear header-nav">
+                <div class="ui-left">
+                   <ul class="headLeft">
+                      <li class="head-item">
+                        <a href="javascript:void(0);" target="_self" id="setHome">设为首页</a>
+                      </li>
+                      <li class="head-item">
+                          <a href="javascript:void(0);" target="_self" id="addFavor">加入收藏</a>
+                      </li>
+                      <li class="head-item" onmouseover="displaySomething()" onmouseout="hideSomething()">
+                         <a href="dropdown head-item login" id="loginTTJJ">
+                             <span class="blank blankL">|</span>
+                             <!--书写一个连接的操作 -->
+                             <a herf="javascript:void(0);" target="_self" class="red header-icon pr20">
+                               请登录
+                                 <span class="icon dropdown-icon"></span>
+                             </a>
+                             <span class="blank blankR blankZ">|</span>
+                             <div class="dropdown-menu">
+                                <div class="content">
+                                   <h3>天天基金交易平台</h3>
+                                    <a href="https://login.1234567.com.cn/login" class="btn">
+                                        基金交易<br />
+                                        <span>申购优惠</span>
+                                    </a>
+                                    <a href="https://register.1234567.com.cn/reg/step1" class="btn">
+                                        免费开户<br />
+                                        <span>10秒钟迅速开户</span>
+                                    </a>
+                                    <p>
+                                        产品<b>多</b>交易<b>快</b>服务<b>好</b>
+                                    </p>
+                                </div>
+                             </div>
+                         </a>
+                      </li>
+                      <li class="head-item">免费开户</li>
+                       <li class="head-item">|</li>
+                      <li class="head-item">手机买基金</li>
+                   </ul>
+                </div>
+                <div class="ui-right">
+                    <ul class="headRight">
+                        <li class="head-item">
+                            <a href="http://www.baidu.com">东方财富网</a></li>
+                        <li class="dropdown head-item droplist" onmouseover="displaySomething1()" onmouseout="hideSomething1()">
+                            <span class="blank blankL">|</span>
+                            <a href="http://www.baidu.com" class="red header-icon pr20">
+                            基金交易
+                              <span class="icon dropdown-icon"></span>
+                            </a>
+                            <span class="blank blankR">|</span>
+                        <div class="dropdown-menu">
+                            <!--下拉显示的选项 -->
+                            <ul>
+                                <li>我的资产</li>
+                                <li>活期宝</li>
+                                <li>定期宝</li>
+                                <li>指数报</li>
+                                <li>买基金</li>
+                                <li>基金定投</li>
+                                <li>基金排行</li>
+                            </ul>
+                        </div>
+                        </li>
+                        <li class="head-item">
+                            产品导购
+                            <span class="blank blankR">|</span>
+                        </li>
+                        <li class="head-item">
+                            自选基金
+                            <span class="blank blankR">|</span>
+                        </li>
+                        <li class="head-item">
+                            vip俱乐部
+                            <span class="blank blankR">|</span>
+                        </li>
+                        <li class="head-item">
+                            帮助中心
+                            <span class="blank blankR">|</span>
+                        </li>
+                        <li class="dropdown head-item webMap">
+                            <a href="javascript:void(0)" target="_self"
+                               class="header-icon p120 pr20">网站导航</a>
+                        </li>
+
+
+                    </ul>
+                </div>
+           </div>
+         </div>
+       </div>
+       <!--header end -->
+         <!--adver 广告位 -->
+         <div class="wrapper">
+             <div class="wrapper_min">
+                 <div class="lazy fund_hei60" data-w="1000" data-h="60" data-url="http://same.eastmoney.com/s?z=eastmoney&amp;c=1284&amp;op=1"><iframe frameborder="0" marginwidth="0" marginheight="0" scrolling="no" width="1000" height="60" src="http://same.eastmoney.com/s?z=eastmoney&amp;c=1284&amp;op=1"></iframe></div>
+             </div>
+         </div>
+         <!--广告位结束 -->
+         <!-- 一级导航栏 -->
+         <div class="wrapper F-tabNav">
+             <div class="wrapper_min">
+                 <ul class="nav-tab ui-clear ui-text-gray-light">
+                   <li class="jz">
+                       <a href="http://www.baidu.com">基金净值</a>
+                   </li>
+                     <li class="gz">
+                         <a href="http://www.baidu.com">净值估算</a>
+                     </li>
+                     <li class="ph">
+                         <a href="http://www.baidu.com">基金排行</a>
+                     </li>
+                     <li class="my">
+                         <a href="http://www.baidu.com">自选基金</a>
+                     </li>
+                     <li class="bar">
+                         <a href="http://www.baidu.com">基金吧</a>
+                     </li>
+                     <li class="hm">
+                         <a href="http://www.baidu.com">东方财富网旗下平台</a>
+                     </li>
+                     <li class="kh">
+                         <a href="http://www.baidu.com">免费开户</a>
+                     </li>
+                     <li class="jy">
+                         <a href="http://www.baidu.com">免费开户</a>
+                     </li>
+
+                     <li class="dg">
+                         <a href="http://www.baidu.com">免费开户</a>
+                     </li>
+
+                     <li class="hqb">
+                         <a href="http://www.baidu.com">免费开户</a>
+                     </li>
+
+                     <li class="gd">
+                         <a href="http://www.baidu.com">免费开户</a>
+                     </li>
+
+                 </ul>
+             </div>
+         </div>
+         <!--一级导航栏结束 -->
+         <!-- 二级导航栏 -->
+         <div class="wrapper F-tabNav">
+             <div class="wrapper_min">
+              <div class="navbar ui-clear">
+                <div class="navbar-item jjsj">
+                  <!--这个下面包含连个div-->
+                    <div class="title ui-clear"></div>
+                    <div class="content ui-clear"></div>
+                </div>
+
+              </div>
+             </div>
+         </div>
+         <!--二级导航栏结束 -->
+     </div>
+
+   </div>
+<script type="text/javascript">
+  function close_main_pd(clickNode,event){
+  	//提供一种功能能够关闭其父级的div
+  	//在这个事件中传入两个参数，第一个参数是等待关闭的node节点，event是这个事件的
+  	//名称
+  	
+  	//获取器父级的节点并关闭这个节点
+  	var parent = clickNode.parentNode; //获取它的父节点
+     console.log(parent.style);
+     parent.style.display = "none";
+  	
+  }
+    function displaySomething(){
+        //当鼠标移动上去就会显示
+        console.log("展示必要的细腻");
+        document.getElementsByClassName("dropdown-menu")[0].style.display = "block";
+    }
+     function  displaySomething1(){
+        document.getElementsByClassName("dropdown-menu")[1].style.display = "block";
+     }
+    function hideSomething(){
+        //单鼠标移出去的时候触发一个
+        console.log("当鼠标移动出去的时候触发的事件");
+        document.getElementsByClassName('dropdown-menu')[0].style.display = "none";
+    }
+
+  function hideSomething1(){
+      //单鼠标移出去的时候触发一个
+      console.log("当鼠标移动出去的时候触发的事件");
+      document.getElementsByClassName('dropdown-menu')[1].style.display = "none";
+  }
+
+
+
+</script>
+</body>
+</html>

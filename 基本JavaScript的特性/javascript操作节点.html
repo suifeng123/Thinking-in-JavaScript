@@ -6,11 +6,11 @@
 	<title>添加节点</title>
 </head>
 <body>
- <div id="myDIV"></div>
+ <div id="myDIV" my_special_attribute="hello!"></div>
  <script type="text/javascript">
     var div = document.getElementById('myDIV');
-    console.log(div.tagName);
-    console.log(div.tagName == div.nodeName);
+    var value = div.getAttribute("my_special_attribute");
+    console.log(value);
  </script>
 </body>
 </html>
