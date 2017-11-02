@@ -6,13 +6,12 @@
 	<title>添加节点</title>
 </head>
 <body>
- <div id="myDIV" my_special_attribute="hello!"></div>
+ <div>Hello World</div>
  <script type="text/javascript">
-    var div = document.getElementById('myDIV');
-    var value = div.getAttribute("my_special_attribute");
-    console.log(value);
-    console.log(div.id);
-    console.log(div.my_special_attribute);
+    var firstdiv = document.getElementsByTagName('div')[0];
+    var textNode = firstdiv.firstChild;
+    console.log(textNode);
+    firstdiv.firstChild.nodeValue = "王圣文";
  </script>
 </body>
 </html>
