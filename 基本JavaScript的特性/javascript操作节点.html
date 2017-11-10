@@ -6,6 +6,70 @@
 	<title>添加节点</title>
 </head>
 <body>
- 
+ <button id="btn1">按钮事件</button>
+ <img id="myImage" src="1.gif">
+ <script type="text/javascript">
+    var EventUtil = {
+    	addHandler: function(element,type,handler){
+    		//省略代码
+    		if(element.addEventListener){
+    			element.addEventListener(type,handler,false);
+    		}else if(element.attachEvent){
+    			element.attachEvent("on" + type,handler);
+    		}else{
+    			element["on" + type] = handler;
+    		}
+    	},
+
+    	getEvent: function(event){
+    		return event ? event : window.event;
+    	},
+
+    	getTarget: function(event){
+    		return event.target || event.srcElement;
+    	},
+
+    	preventDefault: function(event){
+    		if(event.preventDefault){
+    			event.preventDefault();
+    		}else{
+    			event.returnValue = false;
+    		}
+    	},
+
+    	removeHandler: function(element,type,handler){
+    		if(element.removeEventLister){
+    			element.removeEventLister(type,handler,false);
+    		}else if(element.detachEvent){
+    			element.detachEvent("on" + type,handler);
+    		}else{
+    			element["on" + type] = null;
+    		}
+    	},
+
+    	stopPropagation: function(event){
+    		if(event.stopPropagation){
+    			event.stopPropagation();
+    		}else {
+    			event.cancelBubble = true;
+    		}
+    	}
+    };
+
+    
+
+    EventUtil.addHandler(window,"load",function(event){
+
+         console.log("事件加载完毕");
+         alert("页面加载完毕");
+    })
+
+    var image = document.getElementById('myImage');
+
+    EventUtil.addHandler(image,"load",function(event){
+    	event = EventUtil.getEvent(event);
+    	alert(EventUtil.getTarget(event).src);
+    })
+ </script>
 </body>
 </html>
