@@ -407,6 +407,44 @@ a,button {
 	padding-left: 10px;
 }
 
+.navbar .tzgj{
+	padding-left: 15px;
+}
+
+.navbar .tzgj, .navbar .tzgj .content{
+	width: 191px;
+}
+
+.navbar .tzgj .title {
+	width: 176px;
+
+}
+
+.navbar .tzgj{
+	background-color: red;
+}
+
+.wrapper {
+	background-color:#fff;
+}
+
+.fund_margin10 {
+	margin-bottom:10px;
+}
+
+.wrapper{
+	min-width: 1000px;
+}
+
+.wrapper .wrapper_min {
+	margin: 0 auto;
+	width: 1000px;
+}
+
+
+
+
+
 
 
 
