@@ -406,6 +406,79 @@ a,button {
 .navbar .jjsj {
 	padding-left: 10px;
 }
+.navbar .jjsj .content{
+	width: 308px;
+}
+.navbar .navbar-item{
+	float:left;
+}
+
+.navbar .jjsj .title{
+	width: 293px;
+}
+
+.navbar .navbar-item .title{
+	height: 16px;
+	line-height: 16px;
+	position: relative;
+}
+
+.navbar .navbar-item .title h3{
+	font-weight: bold;
+	font-size: 14px;
+	float: left;
+}
+
+.navbar .navbar-item .title h3 a {
+	color: #333;
+	text-decoration: none;
+}
+a{/*对a标签进行必要的设置 */
+    background-color: transparent;
+ }
+
+ .ui-right{
+ 	float:right; 
+ }
+.navbar .navbar-item .title a.goMore{
+	padding-right:8px;
+}
+
+a.ui-text-nounderline:link,a.ui-text-nounderline:visited{
+	text-decoration:none;
+}
+
+a:link,a:visited{
+	color:#039;
+}
+
+.ui-left .ui-right{
+	display:inline;
+}
+
+.navbar .navbar-item .content{
+	border-right: 1px dashed #ddd;
+	padding-top: 5px;
+}
+.navbar .navbar-item .content li {
+	padding-bottom: 2px;
+}
+.navbar .navbar-item .content a{
+	margin-right: 8px;
+}
+
+.navbar .zxhd {
+	padding-left: 15px;
+}
+
+.navbar .zxhd, .navbar .zxhd .content{
+	width: 191px;
+}
+
+.narbar .navbar-item {
+	float: left;
+}
+
 
 
 
