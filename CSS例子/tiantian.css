@@ -441,6 +441,11 @@ a,button {
 	width: 1000px;
 }
 
+.dataCenter {
+	background-color: #e2efff;
+	height:38px; /*设置这个div的高度 */
+	border: 1px solid #5889d5;
+}
 
 
 

@@ -309,6 +309,16 @@ overflow:hidden;z-index:65535;position:relative;display:none;">
                 <div style="width:100%;height:50px;background-color: greenyellow"></div>
              </div>
          </div>
+
+         <!--行情中心  start -->
+         <div class="wrapper F_dataCnter">
+             <div class="wrapper_min">
+                 <div class="dataCenter ui-clear">
+
+                 </div>
+             </div>
+         </div>
+         <!-- 行情中心 end -- >
      </div>
 
    </div>
@@ -325,6 +335,10 @@ overflow:hidden;z-index:65535;position:relative;display:none;">
      parent.style.display = "none";
   	
   }
+    function(){
+      //这个函数为添加回到顶部的函数调用
+      console.log('点击按钮，页面会回到顶部');
+    }
     function displaySomething(){
         //当鼠标移动上去就会显示
         console.log("展示必要的细腻");
