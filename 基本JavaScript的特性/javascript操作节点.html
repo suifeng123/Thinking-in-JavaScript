@@ -58,17 +58,10 @@
 
     
 
-    EventUtil.addHandler(window,"load",function(event){
+    EventUtil.addHandler(window,"resize",function(event){
+         console.log("窗口发生了变化");
+         alert("窗口发生了变化");
 
-         console.log("事件加载完毕");
-         alert("页面加载完毕");
-    })
-
-    var image = document.getElementById('myImage');
-
-    EventUtil.addHandler(image,"load",function(event){
-    	event = EventUtil.getEvent(event);
-    	alert(EventUtil.getTarget(event).src);
     })
  </script>
 </body>
