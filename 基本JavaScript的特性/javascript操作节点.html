@@ -6,8 +6,7 @@
 	<title>添加节点</title>
 </head>
 <body>
- <button id="btn1">按钮事件</button>
- <img id="myImage" src="1.gif">
+ <div id="myDiv" style="width:300px;height:300px;background:blue;"></div>
  <script type="text/javascript">
     var EventUtil = {
     	addHandler: function(element,type,handler){
@@ -53,15 +52,47 @@
     		}else {
     			event.cancelBubble = true;
     		}
-    	}
+    	},
+
+        getRelatedTarget: function(event){
+            if(event.relatedTarget){
+                return event.relatedTarget;
+            }else if(event.toElement){
+                return event.toElement;
+            }else if(event.fromElement){
+                return event.fromElement;
+            }else{
+                return null;
+            }
+        },
+
+        getButton: function(event){
+            if(document.implementation.hasFeature('MouseEvent',"2.0")){
+                return event.button;
+            }else {
+                switch(event.button){
+                    case 0:
+                    case 1:
+                    case 3:
+                    case 5:
+                    case 7:
+                        return 0;
+                    case 2:
+                    case 6:
+                        return 2;
+                    case 4:
+                        return 4;
+                }
+            }
+        }
     };
 
     
 
-    EventUtil.addHandler(window,"resize",function(event){
-         console.log("窗口发生了变化");
-         alert("窗口发生了变化");
-
+    var div = document.getElementById('myDiv');
+    EventUtil.addHandler(div,"click",function(event){
+        var event = EventUtil.getEvent(event);
+        alert("Page coordinates: "+ event.pageX +","+event.pageY);
     })
  </script>
 </body>
