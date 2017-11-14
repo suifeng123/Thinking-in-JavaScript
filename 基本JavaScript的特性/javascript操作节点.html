@@ -6,7 +6,7 @@
 	<title>添加节点</title>
 </head>
 <body>
- <div id="myDiv" style="width:300px;height:300px;background:blue;"></div>
+ <input type="text"  id="myText" />
  <script type="text/javascript">
     var EventUtil = {
     	addHandler: function(element,type,handler){
@@ -84,16 +84,24 @@
                         return 4;
                 }
             }
+        },
+
+        getCharCode: function(event){
+            if(typeof event.charCode == "number"){
+                 return event.charCode;
+            }else{
+                 return event.keyCode;
+            }
         }
     };
 
     
 
-    var div = document.getElementById('myDiv');
-    EventUtil.addHandler(div,"click",function(event){
+    var div = document.getElementById('myText');
+    EventUtil.addHandler(div,'keyup',function(event){
         var event = EventUtil.getEvent(event);
-        alert("Page coordinates: "+ event.pageX +","+event.pageY);
-    })
+        alert(event.keyCode);
+    })    
  </script>
 </body>
 </html>
