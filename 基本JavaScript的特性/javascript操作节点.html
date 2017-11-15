@@ -6,7 +6,12 @@
 	<title>添加节点</title>
 </head>
 <body>
- <input type="text"  id="myText" />
+ <div id="myDiv">ctrl+click</div>
+ <ul id="myMenu" style="position: absolute;visibility: hidden;background-color:silver;">
+     <li>1111</li>
+     <li>2222</li>
+     <li>3333</li>
+ </ul>
  <script type="text/javascript">
     var EventUtil = {
     	addHandler: function(element,type,handler){
@@ -97,11 +102,27 @@
 
     
 
-    var div = document.getElementById('myText');
-    EventUtil.addHandler(div,'keyup',function(event){
-        var event = EventUtil.getEvent(event);
-        alert(event.keyCode);
-    })    
+    EventUtil.addHandler(window,"load",function(event){
+        var div = document.getElementById('myDiv');
+
+        EventUtil.addHandler(div,"contextmenu",function(event){
+            event = EventUtil.getEvent(event);
+            EventUtil.preventDefault(event);
+
+            var menu = document.getElementById('myMenu');
+            menu.style.left = event.cilentX + 'px';
+            menu.style.top  = event.clientY + "px";
+            menu.style.visibility = "visible";
+        });
+
+        EventUtil.addHandler(document,"click",function(event){
+            document.getElementById("myMenu").style.visibility = "hidden";
+        })
+    }) 
+
+    EventUtil.addHandler(window,"beforeunload",function(event){
+        event = EventUtil.getEvent(event);
+    })  
  </script>
 </body>
 </html>
