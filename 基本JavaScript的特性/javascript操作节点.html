@@ -116,19 +116,39 @@
         }
     };
 
-    var textbox = document.forms[0].elements[0];
-    //验证鼠标按下的情况
-    EventUtil.addHandler(textbox,"keypress",function(event){
-    	event  =  EventUtil.getEvent(event);
-    	var target = EventUtil.getTarget(event);
-    	var charCode = EventUtil.getCharCode(event);
-    	console.log("屏蔽所有的按键操作");
-    	if(!/\d/.test(String.fromCharCode(charCode))){
-    	   EventUtil.preventDefault(event);	
-    	}
-    	
-    })
-   
+   //展示Promise的调用流程
+   window.onload = function(){
+   	 function pms1() {
+                    return new Promise(function(resolve, reject) {
+                        setTimeout(function() {
+                            console.log('执行任务1');
+                            resolve('执行任务1成功');
+                        }, 2000);
+                    });
+                }
+
+                function pms2() {
+                    return new Promise(function(resolve, reject) {
+                        setTimeout(function() {
+                            console.log('执行任务2');
+                            resolve('执行任务2成功');
+                        }, 3000);
+                    });
+                }
+
+                function pms3() {
+                    return new Promise(function(resolve, reject) {
+                        setTimeout(function() {
+                            console.log('执行任务3');
+                            resolve('执行任务3成功');
+                        }, 4000);
+                    });
+                }
+                Promise.race([pms1(), pms2(), pms3()]).then(function(data) {
+                    console.log(data);
+                    console.log({}.toString.call(data));
+                })
+   }
 
  </script>
 </body>
