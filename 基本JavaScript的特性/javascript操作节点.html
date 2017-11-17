@@ -4,14 +4,17 @@
 <html>
 <head>
 	<title>添加节点</title>
+    <style type="text/css">
+     li+li{
+        font-size: 20px;
+     }
+    </style>
 </head>
 <body>
- <div id="myDiv">ctrl+click</div>
- <ul id="myMenu" style="position: absolute;visibility: hidden;background-color:silver;">
-     <li>1111</li>
-     <li>2222</li>
-     <li>3333</li>
- </ul>
+ <form method="post" id="myForm">
+  
+  <textarea rows="250" cols="35">Initial Value</textarea>
+ </form>
  <script type="text/javascript">
     var EventUtil = {
     	addHandler: function(element,type,handler){
@@ -97,32 +100,36 @@
             }else{
                  return event.keyCode;
             }
+        },
+
+        getClipboardText: function(event){
+        	var clipboardData = (event.clipboardData || window.clipboardData);
+        	return clipboardData.getData("text");
+        },
+
+        setClipboardText: function(event,value){
+        	if(event.clipboardData){
+        		return event.clipboardData.setData("text/plain",value);
+        	}else if(window.clipboardData){
+        		return window.clipboardData.setData("text/plain",value);
+        	}
         }
     };
 
-    
+    var textbox = document.forms[0].elements[0];
+    //验证鼠标按下的情况
+    EventUtil.addHandler(textbox,"keypress",function(event){
+    	event  =  EventUtil.getEvent(event);
+    	var target = EventUtil.getTarget(event);
+    	var charCode = EventUtil.getCharCode(event);
+    	console.log("屏蔽所有的按键操作");
+    	if(!/\d/.test(String.fromCharCode(charCode))){
+    	   EventUtil.preventDefault(event);	
+    	}
+    	
+    })
+   
 
-    EventUtil.addHandler(window,"load",function(event){
-        var div = document.getElementById('myDiv');
-
-        EventUtil.addHandler(div,"contextmenu",function(event){
-            event = EventUtil.getEvent(event);
-            EventUtil.preventDefault(event);
-
-            var menu = document.getElementById('myMenu');
-            menu.style.left = event.cilentX + 'px';
-            menu.style.top  = event.clientY + "px";
-            menu.style.visibility = "visible";
-        });
-
-        EventUtil.addHandler(document,"click",function(event){
-            document.getElementById("myMenu").style.visibility = "hidden";
-        })
-    }) 
-
-    EventUtil.addHandler(window,"beforeunload",function(event){
-        event = EventUtil.getEvent(event);
-    })  
  </script>
 </body>
 </html>
