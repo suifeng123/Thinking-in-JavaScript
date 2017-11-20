@@ -13,8 +13,7 @@
 <body>
  <form method="post" id="myForm">
   
-  <textarea rows="250" cols="35">Initial Value</textarea>
- </form>
+ <input type="email" name="username" required >
  <script type="text/javascript">
     var EventUtil = {
     	addHandler: function(element,type,handler){
@@ -115,41 +114,61 @@
         	}
         }
     };
+    //进行必要的表单序列化
+    function serialize(form){
+    	var parts = [],
+    	    field = null,
+    	    i,
+    	    len,
+    	    j,
+    	    optLen,
+    	    option,
+    	    optValue;
 
-   //展示Promise的调用流程
-   window.onload = function(){
-   	 function pms1() {
-                    return new Promise(function(resolve, reject) {
-                        setTimeout(function() {
-                            console.log('执行任务1');
-                            resolve('执行任务1成功');
-                        }, 2000);
-                    });
-                }
+    	    for(var i = 0, len = form.elements.length ; i < len ; i++){
+    	    	field = form.elements[i];
+                //对于选项的类型进行必要的判断
+    	    	switch(field.type){
+                     case "select-one":
+                     case "select-multiple":
+                        if(field.name.length){
+                        	for(j = 0,optLen = field.options.length; j < optLen;j++){
+                        		option = field.options[j];
+                        		if(option.selected){
+                        			optValue = "";
+                        			if(option.hasAttribute){
+                        				optValue = (opt.hasAttribute("value")?option.value :option.text);
+                        			}else{
+                        				optValue = (option.attributes["value"].specified?option.value:option.text);
+                        			}
+                        			parts.push(encodeURIComponent(field.name)+"="+encodeURIComponent(optValue));
+                        		}
+                        	}
+                        }
+                        break;
+                    case undefined: //字段集
+                    case "file":    //文件输入
+                    case "submit":  //提交按钮
+                    case "reset":   //重置按钮
+                    case "button":  //自定义按钮
+                       break;
+                    case "radio":   //单选按钮
+                    case "checkbox": //复选框
+                        if(!field.checked){
+                        	break;
+                        }
+                    default:
+                        //不包含没有名字的表单字段
+                        if(field.name.length){
+                        	parts.push(encodeURIComponent(field.name)+"="+encodeURIComponent(field.value));
+                        }
+    	    	}
+    	    }
+    	    return parts.join('&');
+    }
 
-                function pms2() {
-                    return new Promise(function(resolve, reject) {
-                        setTimeout(function() {
-                            console.log('执行任务2');
-                            resolve('执行任务2成功');
-                        }, 3000);
-                    });
-                }
-
-                function pms3() {
-                    return new Promise(function(resolve, reject) {
-                        setTimeout(function() {
-                            console.log('执行任务3');
-                            resolve('执行任务3成功');
-                        }, 4000);
-                    });
-                }
-                Promise.race([pms1(), pms2(), pms3()]).then(function(data) {
-                    console.log(data);
-                    console.log({}.toString.call(data));
-                })
-   }
-
+   var isUsernameRequired = document.forms[0].elements["username"].required;
+   console.log("显示正式的布尔值:"+isUsernameRequired);
  </script>
 </body>
 </html>
