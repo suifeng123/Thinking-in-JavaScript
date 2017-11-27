@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> H5 Example</title>
+	<style type="text/css">
+       .class2 {
+       	 background-color: grey;
+       	 color: white;
+       	 padding: 5px;
+       	 margin: 2px;
+       }
+       .class1 {
+       	font-size: x-large;
+       }
+	</style>
+</head>
+<body>
+ <form>
+   姓名 ：<input type="text" name="name" accesskey="n" />
+   <p />
+   密码： <input type="text" name="password" accesskey="p" />
+   <p />
+   <input type="submit" value="登录" accesskey="s" onclick="login(event)" />
+ </form>
+ <script type="text/javascript">
+   function login(event){
+   	  console.log("用户点击了登录");
+   	  console.log(event);
+   }
+ </script>
+</body>
+</html>
