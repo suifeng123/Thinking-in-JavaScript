@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+        function createXHR() {
+        	if(typeof XMLHttpRequest != "undefined"){
+        		return new XMLHttpRequest();
+        	}else if(typeof ActiveXObject != "undefined"){
+        		var versions = ['MSXML2.XMLHttp.6.0',"MSXML2.XMLHttp.3.0",
+        		"MSXML2.XMLHttp"],
+        		i,len;
+
+        		for(var i=0,len=versions.length; i < len; i++){
+        			try{
+        				new ActiveXObject(versions[i]);
+        			}
+        		}
+        	}
+        }
+	</script>
+</head>
+<body>
+
+</body>
+</html>
