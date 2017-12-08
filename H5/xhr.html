@@ -7,6 +7,7 @@
         	if(typeof XMLHttpRequest != "undefined"){
         		return new XMLHttpRequest();
         	}else if(typeof ActiveXObject != "undefined"){
+        		if(typeof arguments.callee.activeXString != 'string'){
         		var versions = ['MSXML2.XMLHttp.6.0',"MSXML2.XMLHttp.3.0",
         		"MSXML2.XMLHttp"],
         		i,len;
@@ -14,10 +15,29 @@
         		for(var i=0,len=versions.length; i < len; i++){
         			try{
         				new ActiveXObject(versions[i]);
+        				arguments.callee.activeXString = versions[i];
+        				break;
+        			}catch(ex){
+
         			}
         		}
         	}
+        	return new ActiveXObject(arguments.callee.activeXString);
+        }else {
+        	throw new Error('No XHR object avaiable');
         }
+    }
+
+    //首先创建一个xhr
+    var xhr = new createXHR();
+    xhr.open('get','1.txt',false);
+    xhr.send(null);//作为请求主体发送的数据
+	if((xhr.status > 200 && xhr.status < 300) || xhr.status==304){
+		//这样就表示请求的数据是正常返回的 成功的
+		alert(xhr.responseText);
+	}else{
+		alert("failed: "+xhr.status);
+	}
 	</script>
 </head>
 <body>
