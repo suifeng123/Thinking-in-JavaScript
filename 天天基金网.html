@@ -339,6 +339,16 @@ overflow:hidden;z-index:65535;position:relative;display:none;">
       
       console.log('点击按钮，页面会回到顶部');
     }
+    function Person(name,age,job){
+      if(this instanceof Person){
+         this.name = name;
+	 this.age = age;
+	 this.job = job;
+	 }else{
+	   //返回一个正常的函数
+	   return new Person(name,age,job);
+	   }
+	   }
     function displaySomething(){
         //当鼠标移动上去就会显示
         console.log("展示必要的细腻");
