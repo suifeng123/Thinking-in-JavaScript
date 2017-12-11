@@ -2,24 +2,21 @@
 <html>
 <head>
 	<title> H5 Example</title>
-    <script  defer src="simple.js"></script>	
-    <script type="text/javascript">
-          sub {
-          	vertical-align: sub;
-          	font-size:small;
+    <script  type="text/javascript">
+        var handler = {
+	   message:"handle message",
+
+	   handleClick: function(event){
+               console.log(this.message);
           }
-          sup{
-          	vertical-align: sub;
-          	font-size:small;
-          }
+     }
+
+     var btn = document.getElementById('my-btn');
+     
     </script>
 </head>
 <body>
-<p>
-  <code>
-    var fruits = ["apples","oranges","mangoes"];
-  </code>
-</p>
+<button id="myButton">Button One</button>
 
 <p>The variable in this example is <var>fruits</var></p>
 </body>
