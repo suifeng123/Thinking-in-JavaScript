@@ -2,22 +2,26 @@
 <html>
 <head>
 	<title> H5 Example</title>
-    <script  type="text/javascript">
-        var handler = {
-	   message:"handle message",
 
-	   handleClick: function(event){
-               console.log(this.message);
-          }
-     }
+    <style>
+        h1,h2,h3{background: grey;color:white;}
+        hgroup > h1 {
+            margin-bottom: 0px;
 
-     var btn = document.getElementById('my-btn');
-     
-    </script>
+        }
+        hgroup > h2 {
+            background: grey;
+            color: white;
+            font-size: 1em;
+            margin-top: 0px;
+        }
+    </style>
 </head>
 <body>
-<button id="myButton">Button One</button>
-
-<p>The variable in this example is <var>fruits</var></p>
+<hgroup>
+    <h1>Friuts I like</h1>
+    <h2>How I learned to love </h2>
+</hgroup>
+<h2>sadfsda</h2>
 </body>
 </html>

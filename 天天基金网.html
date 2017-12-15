@@ -338,6 +338,13 @@ overflow:hidden;z-index:65535;position:relative;display:none;">
     function(){
       
       console.log('点击按钮，页面会回到顶部');
+    
+    }
+    function getAnther(){
+       //采用闭包的形式
+       return function(){
+          console.log('这里形成了一个闭包的形式');
+       }
     }
     function Person(name,age,job){
       if(this instanceof Person){
