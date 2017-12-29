@@ -84,13 +84,9 @@
       <file leaf-file-name="天天基金网.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/天天基金网.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.30555555">
-              <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
-              <folding>
-                <element signature="e#2099#3234#2" expanded="true" />
-                <element signature="e#4813#6628#2" expanded="true" />
-                <element signature="e#6717#8880#2" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.51648355">
+              <caret line="57" column="25" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="25" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -195,7 +191,8 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="86" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="1382" />
     <option name="height" value="744" />
   </component>
@@ -223,7 +220,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -258,6 +254,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -374,7 +371,7 @@
     <option name="totallyTimeSpent" value="1795000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="86" y="0" width="1382" height="744" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17642753" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -800,13 +797,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/天天基金网.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30555555">
-          <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
-          <folding>
-            <element signature="e#2099#3234#2" expanded="true" />
-            <element signature="e#4813#6628#2" expanded="true" />
-            <element signature="e#6717#8880#2" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.51648355">
+          <caret line="57" column="25" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
