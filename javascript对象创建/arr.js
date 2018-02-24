@@ -4,6 +4,7 @@ var arr = [1,2,3,4,5,6,7,8,9,10];
 console.log(arr.shift()); //并且这个算法改变了原来的数组的形式
 console.log(arr);
 
+//进行数列的部分操作
 arr.unshift(1);
 console.log(arr);
 
