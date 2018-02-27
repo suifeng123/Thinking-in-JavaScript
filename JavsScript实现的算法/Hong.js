@@ -1,21 +1,22 @@
 /**
  * Created by Administrator on 2017/6/15.
  */
+
 var closeDoorCommand = {
     execute: function(){
-        console.log("Ö´ÐÐ¹ØÃÅµÄ²Ù×÷");
+        console.log("¿¿¿¿¿");
     }
 };
 
 var openPcCommand = {
     execute: function(){
-        console.log("´ò¿ªµçÄÔ");
+        console.log("¿¿¿¿¿¿");
     }
 };
 
 var openQQCommand =  {
     execute: function() {
-        console.log("´ò¿ªQQÓ¦ÓÃ");
+        console.log("¿¿QQ¿¿¿");
     }
 };
 
@@ -40,4 +41,4 @@ aa.add(openPcCommand);
 aa.add(openQQCommand);
 aa.add(closeDoorCommand);
 
-aa.execute();
+aa.execute();//
