@@ -1,12 +1,28 @@
 /**
  * Created by Administrator on 2017/6/13.
  */
-var each = function(ary,callback) {
-    for(var i= 0,l = ary.length;i < l;i++){
-        callback.call(ary[i],i,ary[i]);
-    }
-};
+var each = function(arr,callback){
+       
+	for(var i = 0 ; i < arr.length ; i++){
+	     callback.call(arr[i],i,arr[i]);
+	}
+}
 
-each([1,2,3],function(i,n){
-    console.log("一些主要的参数："+i+"dsafas:"+n)
-})
+each([1,2,3],function(n,i){
+	console.log( i + n);
+});
+
+var compare = function(arr1,arr2){
+
+      if(arr1.length !== arr2.length){
+           return false;
+      }
+
+	each(arr1,function(i,n){
+	    //靠靠靠靠arr1靠靠縜rr2靠靠
+	    if(arr1[i] !== arr2[i]){
+	        return false;
+	    }
+	})
+
+}

@@ -17,7 +17,7 @@ var Event = (function(){
 	};
 
 	trigger = function(){
-	     var fns = Array.prototype.shift.call(arguments);
+	     var key = Array.prototype.shift.call(arguments);
 	      var fns = clientList[key];
 	      if(!fns || fns.length === 0){
 	          return false;
@@ -60,3 +60,6 @@ var Event = (function(){
 Event.listen('squareMeter88',function(price){
       console.log('价格 = ' + price);
 });
+
+//进行触发相应的需求
+Event.trigger('squareMeter88',2000000);
