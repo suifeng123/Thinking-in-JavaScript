@@ -5,12 +5,36 @@
 		<title></title>
 	</head>
 	<body>
-		<ul id="ul1">
-		    <li>111</li>
-			<li>222</li>
-			<li>333</li>
-		</ul>
+		<div id="box">
+		    <input type="button" id="add" value="添加" />
+			<input type="button" id="remove" value="删除" />
+			<input type="button" id="move" value="移动" />
+			<input type="button" id="select" value="选择" />
+		</div>
 	</body>
 	<script>
+		 window.onload = function(){
+			 var oBox = document.getElementById("box");
+			 oBox.onclick = function(ev){
+				 var ev = ev || window.event;//为了解决IE中事件不能够兼容的问题
+				 var target = ev.target || ev.srcElement;
+				 if(target.nodeName.toLocaleLowerCase() === 'input'){
+					 switch(target.id){
+						 case 'add': 
+						    alert('添加');
+							break;
+						case 'remove':
+						    alert("删除");
+							break;
+						case 'move':
+						    alert('移动');
+							break;
+						case 'select':
+						    alert('选择');
+							break;
+					 }
+				 }
+			 }
+		 }
 	</script>
 </html>
