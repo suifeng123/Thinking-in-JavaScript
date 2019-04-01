@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="div1">我是一个div</div> 
+	</body>
+	<script>
+	    window.id = 'window';
+		
+		document.getElementById('div1').onclick = function(){
+			/**
+			 * 在这个函数中  当this作为普通函数调用时 总是指向全局对象
+			 */
+			console.log(this.id);
+			that = this;
+			var callback = function(){
+				console.log(that.id);
+			}
+			callback();
+		};
+	</script>
+</html>
