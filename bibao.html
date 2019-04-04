@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="execute">点击我执行命令</button>
+		<button id="undo">点击我执行命令</button>
+		<script>
+		 var Tv = {
+			 open: function(){
+				 console.log('打开电视机');
+			 },
+			 close: function(){
+				 console.log('关上电视机');
+			 }
+		 };
+		 
+		 var openTvCommand = function(receiver){
+			 this.receiver = receiver;//这是一个非常巧妙的方法
+		 };
+		 OpenTvCommand.prototype.execute = function(){
+			    this.receiver.open(); //执行打开电视机的方法
+		 };
+		 OpenTvCommand.prototype.undo = function(){
+			 this.receiver.close(); //撤销命令  关闭电视机的方法
+		 };
+		 
+		 var setCommand = function(command){
+			 document.getElementById('execute').onClick = function(){
+				 command.execute();//输出: 打开电视机
+			 }
+			 document.getElementById('undo').onclick = function(){
+				 command.undo();//输入: 关闭电视机
+			 }
+		 };
+		 
+		 setCommand(new OpenTvCommand(Tv));
+		</script>
+	</body>
+</html>
