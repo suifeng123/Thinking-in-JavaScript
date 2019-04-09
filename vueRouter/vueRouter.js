@@ -192,5 +192,224 @@ function addRouteRecord(
 	const { path,name } = route 
 	const pathToRegexpOptions: PathToRegexpOptions = route.pathToRegexpOptions || {},
 	//格式化 url, 替换
-	const normalizedPath = normalizePath(path,parent,pathToRegexpOptions.strict)
+	const normalizedPath = normalizePath(path,parent,pathToRegexpOptions.strict);
+	//生成记录对象
+	const record: RouteRecord = {
+		path: normalizedPath,
+		regex: compileRouteRegex(normalizedPath,pathToRegexpOptions),
+		components: route.components || {default: route.component},
+		instances: {},
+		name,
+		parent,
+		matchAs,
+		redirect: route.redirect,
+		meta: route.meta || {},
+		props: route.props == null ? {} : route.components ? route.props ,
+		: {default: route.props}
+	}
+	
+	if(route.children){
+		//递归路由配置的children属性  添加路由记录
+		route.children.forEach(child => {
+			const childMatchAs = matchAs 
+			? cleanPath(`${matchAs}/${child.path}`)
+			: undefined ;
+			addRouteRecord(pathList,pathMap,nameMap,child,record,childMatchAs);
+		})
+	}
+	//如果路由有别名的话
+	//给别名也添加路由记录
+	if(route.alias !== undefined){
+		const aliases = Array.isArray(route.alias) ? route.alias : [route.alias];
+		
+		aliases.forEach(alias => {
+			const aliasRoute = {
+				path: alias,
+				children: route.children 
+			}
+			addRouteRecord(
+			   pathList,
+			   pathMap,
+			   nameMap,
+			   aliasRoute,
+			   parent,
+			   record.path || '/'
+			)
+		})
+	}
+	//更新映射表
+	if(!pathMap[record.path]){
+		pathList.push(record.path) 
+		pathMap[record.path] = record 
+	}
+	
+	//命名路由添加记录
+	if(name){
+		if(!nameMap[name]){
+			nameMap[name] = record 
+		}else if(process.env.NODE_ENV !== 'production' && !matchAs){
+			warn()
+		}
+	}
+}
+
+init(app: any/* Vue component instance */){
+	//保存组件实例
+	this.apps.push(app);
+	//如果组件已经有了返回
+	if(this.app){
+		return 
+	}
+	this.app = app 
+	//赋值路由模式
+	const history = this.history 
+	//判断路由模式 ，以哈希模式为例
+	if(history instanceof HTML5History){
+		history.transitionTo(history.getCurrentLocation())
+	}else if(history instanceof HashHistory){
+		//添加 hashchange监听
+		const setupHashListener = () => {
+			history.setupListeners();
+		}
+		//路由跳转
+		history.transitionTo(
+		    history.getCurrentLocation(),
+			setupHashListener,
+			setupHashListener
+		)
+	}
+	
+	//该回调会在 transitionTo 中调用
+	//对组件的 _route 属性进行赋值，触发组件渲染
+	history.listen(route => {
+		this.apps.forEach(app => {
+			app._route = route 
+		})
+	})
+}
+
+transitionTo(location: RawLocation,onComplete?: Function,onAbort?:Function){
+	//获取匹配的路由信息
+	const route = this.router.match(location,this.current)
+	//确认切换路由信息
+	this.confirmTransition(route,() => {
+		//以下为切换路由成功或者失败的回调
+		//更新路由信息，对组件_route属性进行赋值，触发组件渲染
+		//调用afterHooks中的钩子函数
+		this.updateRoute(route);
+		//添加hashchange的监听
+		onComplete && onComplete(route);
+		//更新URL
+		this.ensureURL();
+		//只执行一次ready回调
+		if(!this.ready){
+			this.ready = true 
+			this.readyCbs.forEach(cb => {cb(route)})
+		}
+	},err => {
+		//错误处理
+		if(onAbort){
+			onAbort(err)
+		}
+		if(err && !this.ready){
+			this.ready = true 
+			this.readyErrorsCbs.forEach(cb => {cb(err)})
+		}
+	})
+}
+/**
+ * 在跳转路由中，需要先获取匹配的路由信息
+ */
+function match(
+    raw: RawLocation,
+	currentRoute?: Route,
+	redirectedForm?: Location
+): Route{
+	//序列化 url
+	//比如对于该url
+	const location = normalizeLocation(raw,currentRoute,false,router);
+	const { name } = location;
+	//如果时命名路由，就判断记录中是否有该命名路由配置
+	if(name){
+		const record = nameMap[name];
+		//如果没找到表示匹配的路由
+		if(!record) return _createRoute(null,location);
+		const paramNames = record.regex.keys
+		.filter(key => !key.optional)
+		.map(key => key.name);
+		//参数处理
+		if(typeof location.params !== 'object'){
+			location.params = {};
+		}
+		
+		if(currentRoute && typeof currentRoute.params === 'object'){
+			location.params = {};
+		}
+		if(currentRoute && typeof currentRoute.params === 'object'){
+			for(const key in currentRoute.params){
+				if(!(key in location.params) && paramNames.indexOf(key)>-1){
+					location.params[key] = currentRoute.params[key];
+				}
+			}
+		}
+		
+		if(record){
+			location.path = fillParams(record.path,location.params,`named route "{name}"`);
+			return _createRoute(record,location,redirectedForm);
+		}
+	}else if(location.path){
+		//非命名路由处理
+		location.params = {};
+		for(let i = 0 ; i < pathList.length; i++){
+			//查找记录
+			const path = pathList[i];
+			const record = pathMap[path];
+			//如果匹配路由  则创建路由
+			if(matchRoute(record.regex,location.path,location.params)){
+				return _createRoute(record,location,redirectedForm,router);
+			}
+		}
+	}
+	
+	//没有匹配的路由
+	return _createRoute(null,location);
+}
+
+//根据条件创建不同的路由
+function _createRoute(
+    record: ?RouteRecord,
+	location: Location,
+	redirectedForm?: Location
+): Route{
+	if(record && record.redirect){
+		return redirect(record, redirectedForm || location);
+	}
+	
+	if(record && record.matchAs){
+		return alias(record,location,record.matchAs);
+	}
+	
+	return createRoute(record,location,redirectedForm,router);
+}
+
+export function createRoute(
+    record: ?RouteRecord,
+	location: Location,
+	redirectedForm?: ?Location,
+	router?: VueRouter
+): Route{
+	const stringifyQuery = router && router.options.stringifyQuery;
+	//克隆参数
+	let query: any = location.query || {};
+	try{
+		query = clone(query);
+	}catch(e){
+		//创建路由对象
+		const route: Route = {
+			name: location.name || (record && record.name),
+			meta: (record && record.meta) || {},
+			path: location.path || '/',
+			hash: location.hash || ''
+		}
+	}
 }
