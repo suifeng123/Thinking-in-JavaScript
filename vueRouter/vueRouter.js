@@ -409,7 +409,160 @@ export function createRoute(
 			name: location.name || (record && record.name),
 			meta: (record && record.meta) || {},
 			path: location.path || '/',
-			hash: location.hash || ''
+			hash: location.hash || '',
+			query,
+			params: location.params || {},
+			fullPath: getFullPath(location,stringifyQuery),
+			matched: record ? formMath(record) : []
 		}
+		if(redirectedForm){
+			route.redirectedForm = getFullPath(redirectedForm,stringifyQuery);
+		}
+		//让路由对象不可修改
+		return Object.freeze(route);
+	}
+	//获得包含当前路由的所有嵌套路径片段的路由记录
+	//包含从根路由到当前路由的匹配记录，从上到下
+	function formatMatch(record: ?RouteRecord): Array<RouteRecord>{
+		const res = [];
+		while(record){
+			res.unshift(record);
+			record = record.parent;
+		}
+		return res;
 	}
 }
+
+const queue: Array<?NavigationGuard> = [].concat(,
+     //失活的组件钩子
+	 extractLeaveGuards(deactivated),
+	 //全局beforeEach钩子
+	 this.router.beforeHooks,
+	 //在当前路由改变，但是该组件被复用时调用
+	 extractUpdateHooks(updated),
+	 //需要渲染组件 enter 守卫钩子
+	 activated.map(m => m.beforeEnter),
+	 //解析异步路由组件
+	 resolveAsyncComponents(activated)
+)
+
+//第一步时先执行失活组件的钩子函数
+function extractLeaveGuards(deactivated: Array<RouteRecord>): Array<?Function>{
+	//传入需要执行的钩子函数
+	return extractLeaveGuards(deactivated,'beforeRouteLeave',bindGuard,true);
+}
+
+function extractGuards(
+    records: Array<RouteRecord>,
+	name: string,
+	bind: Function,
+	reverse?: boolean
+): Array<?Function>{
+	const guards = flatMapComponents(records,(def,instance,match,key) => {
+		//找出组件中对应的钩子函数
+		const guard = extractGuard(def,name);
+		if(guard){
+			//给每个钩子函数添加上下文对象为组件自身
+			return Array.isArray(guard) 
+			 ? guard.map(guard => bind(guard,instance,match,key))
+			 : bind(guard,instance,match,key);
+		}
+	})
+	//数组降维，并且判断是否需要反转数组
+	//因为某些钩子函数需要从子执行到父
+	return flatten(reverse ? guards.reverse(): guards);
+}
+
+export function flatMapComponents(
+     matched: Array<RouteRecord>,
+	 fn: Function
+): Array<?Function>{
+	//数组降维
+	return flatten(matched.map(m => {
+		//将数组中的对象传入回调函数中，获得钩子函数数组
+		return Object.keys(m.components).map(key => fn(
+		    m.components[key],
+			m.instances[key],
+			m,key
+		))
+	}))
+}
+
+beforeEach(fn: Function): Function{
+	return registerHook(this.beforeHooks,fn);
+}
+
+function registerHook(list: Array<any>,fn: Function): Function{
+    return (to,from,next) => {
+		let hasAsync = false;
+		let pending = 0;
+		let error = null;
+		//该函数作用之前已经价绍过了
+		flatMapComponents(matched,(def,_,match,key) => {
+			//判断是否时异步组件
+			if(typeof def === 'function' && def.cid === undefined){
+				hasAsync = true;
+				pending++;
+				//成功回调
+				//once函数确保异步组件只加载一次
+				const resolve = once(resolvedDef => {
+					if(isESModule(resolvedDef)){
+						resolvedDef = resolvedDef.default
+					}
+					//判断是否时构造函数
+					//不是的话通过Vue来生成组件构造函数
+					def.resolved = typeof resolvedDef === 'function'
+					? resolvedDef 
+					: _Vue.extend(resolvedDef);
+					def.resolved = typeof resolvedDef === 'function'
+					? resolvedDef
+					: _Vue.extend(resolvedDef)
+					//赋值组件
+					//如果组件全部解析完毕，继续下一步
+					match.components[key] = resolvedDef;
+					pending--;
+					if(pending <= 0){
+						next();
+					}
+				})
+				
+				//失败回调
+				const reject = once(reason => {
+				const msg = `Failed to resolve async component ${key}: ${reason}`
+                process.env.NODE_ENV !== 'production' && warn(false, msg)
+				if(!error){
+					error = isError(reason) ? reason : new Error(msg);
+					next(error)
+				}
+				
+				})
+				
+				let res;
+				try{
+					//执行异步组件函数
+					res = def(resolve,reject);
+				}catch(e){
+					reject(e);
+				}
+				if(res) {
+					//下载完成执行回调
+					if(typeof res.then === 'function'){
+						res.then(resolve,reject);
+					}else{
+						const comp = res.component 
+						if(comp && typeof comp.then === 'function'){
+							comp.then(resolve,reject);
+						}
+					}
+				}
+			}
+		})
+		
+		//不是异步组件直接下一步
+		if(!hasAsync) next();
+	}
+}
+
+//该回调用于保存'beforeRouteEnter'钩子中的回调函数
+const postEnterCbs = [];
+const isValid = () => this.current === route;
