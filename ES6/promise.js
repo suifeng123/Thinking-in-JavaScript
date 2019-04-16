@@ -80,4 +80,46 @@ async function asyncAwaitIsYourNewBestFriend(){
 
 function promiseLoops(){
 	const api = new Api();
+	api.getUser()
+	.then((user) => {
+		return api.getFriends(user.id)
+	})
+	.then((returnedFriends) => {
+		const getFriendsOfFriends = (friends) =>{
+			if(friends.length > 0){
+				let friend = friends.pop();
+				return api.getFriends(friend.id)
+				.then((moreFriends) => {
+					console.log('promiseLoops',moreFriends)
+					return getFriendsOfFriends(friends)
+				})
+			}
+		}
+		return getFriendsOfFriends(returnedFriends)
+	})
 }
+
+function defineReactive(obj,key,val){
+	Object.defineProperty(obj,key,{
+		enumerable: true,//可枚举
+		configurable: true,//可写
+		get: function(){
+			console.log('get');
+			return val;
+		},
+		set: function(newVal){
+			//设置时，可以添加相应的操作
+			console.log('set');
+			val += newVal;
+		}
+	});
+}
+
+let obj = {name:'成龙大哥',say:'其实我之前是拒绝拍游戏广告的'};
+
+Object.keys(obj).forEach(k => {
+	defineReactive(obj,k,obj[k]);
+});
+obj.say = '后来我试玩了一下，哇，好热血，蛮好玩的';
+console.log(obj.name + obj.say);
+obj.eat = '香蕉';
