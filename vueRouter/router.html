@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>前端路由原生实现</title>
+	</head>
+	<body>
+		<!-- 定义路由  -->
+		<li><a href="#/home">home</a></li>
+		<li><a href="#/about">about</a></li>
+		
+		<!-- 渲染路由对应的UI  -->
+		<div id="routeView"></div>
+		<script type="text/javascript">
+		    //页面加载完 不会触发hashchange,这里主动触发一次 hashchange 事件
+			window.addEventListener('DOMContentLoaded',onLoad);
+			//监听路由变化
+			window.addEventListener('hashchange',onHashChange);
+			//路由视图
+			var routerView = null;
+			function onLoad(){
+				//在onload函数中触发这个函数 进行相应的触发信息
+				routerView = document.querySelector('#routeView');//获取相应的路由信息
+				onHashChange();
+			}
+			
+			//路由变化时,根据路由渲染对应UI 
+			function onHashChange(){
+				console.log("进行相应的触发了相应的需求");
+				switch(location.hash){
+					case '#/home':
+					   routerView.innerHTML = 'Home'
+					   return
+					case '#/about':
+					   routerView.innerHTML = 'About'
+					   return
+					default:
+					   return
+				}
+			}
+		</script>
+	</body>
+</html>
