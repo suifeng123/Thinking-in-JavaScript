@@ -14,5 +14,40 @@
 	</body>
 	<script type="text/javascript">
 		//页面加载完不会触发hashchange 这里进行主动触发
+		window.addEventListener('DOMContentLoaded',onLoad);
+		//监听路由变化
+		window.addEventListener('popstate',onPopState);
+		
+		//路由视图
+		var routerView = null;
+		
+		function onLoad(){
+			routerView = document.querySelector('#routerView');
+			onPopState();
+			
+			//拦截<a>标签点击事件默认行为,点击时使用pushState
+			//更新ui 
+			var linkList = document.querySelectorAll('a[href]');
+			linkList.forEach(el => el.addEventListener('click'),function(e){
+				e.preventDefault();
+				history.pushState(null,'',el.getAttribute('href'));
+				onPopState();
+			})
+		}
+		
+		//路由变化时,根据路由渲染对应UI 
+		function onPopState(){
+			switch(location.pathname){
+				case '/home':
+				    routerView.innerHTML = 'Home'
+					return 
+				case '/about':
+				    routerView.innerHTML = 'About'
+					return 
+				default:
+				    return
+			}
+			
+		}
 	</script>
 </html>
