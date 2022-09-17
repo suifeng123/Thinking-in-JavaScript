@@ -21,20 +21,24 @@ function getSum(jsonObj) {
 			arr = [...arr, ...getSum(jsonObj[key])]
 		}
 	}
-	
-	let sum = 0
-	for (let i = 0; i < arr.length; i++) {
-		sum += arr[i]
-	}
-	
-	return sum;
+	return arr;
 }
 
-console.log(getSum({
+var obj = {
 	a: 1,
 	b: {
-		c: 2
+		c:3,
+		f: [1,2]
 	}
-}))
+}
+function getSumFunc (arr) {
+	let total = 0
+	for (let i = 0; i < arr.length; i++) {
+		total += arr[i]
+	}
+	return total;
+}
+
+console.log(getSumFunc(getSum(obj)))
 
 
