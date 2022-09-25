@@ -2,28 +2,25 @@
 <html>
 <head>
 	<title> H5 Example</title>
-    <style>
-       body {
-           margin: 50px 40px;
-           text-algin: center;
-           color:#c5c4c4;
-       }
-        h1{
-            color:#c5c4c4;
-            background: #009933;
-            display: inline;
-        }
-    </style>
+	<meta name="application-name" content="Primus">
+	<meta name="author" content="wangshengwen">
+	<meta name="description" content="简易易用，轻量快捷">
+	<meta name="generator" content="Frontweaver8.5">
+	<meta name="keywords" content="易用、轻量、快捷">
+	<meta name="robots" content="noarchive">
 </head>
 <body>
-   <form method="post" action="">
-       <p>
-           <label for="name">
-               Name:
-               <input type="text" id="name" name="name" pattern="^.*.*$" />
-           </label>
-       </p>
-       <input type="submit" value="Submit" />
-   </form>
+	<canvas id="btnCanvas"  role="button" aria-label="游戏开始" width="200" height="100">
+		<p>这是一个按钮， 用于启动游戏</p>
+	</canvas>
+	<script>
+		var canvas = document.getElementById("btnCanvas"),
+		    ctx = canvas.getContext("2d");
+			ctx.fillStyle = "#007ab9";
+			ctx.fillRect(0, 0, canvas.width, canvas.height);
+			ctx.font = "40px serif";
+			ctx.fillStyle = "#FFF";
+			ctx.fillText("游戏开始", 20, 60);
+	</script>
 </body>
 </html>
