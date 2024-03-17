@@ -170,5 +170,209 @@ const dumpAst = function(node, indent = 2) {
 	}
 }
 
+// 接着实现AST节点访问  从根节点DFS
+const traverseNode = function(ast, context) {
+	// 将ast直接保存到上下文currentNode中
+	context.currentNode = ast
+	// 新增退出阶段回调函数数组
+	const exitFns = []; 
+	// 获取转换逻辑回调数组nodeTransforms 遍历并将currentNode传入并进行处理
+	const transforms = context.nodeTransforms
+	for (let i = 0; i < transforms.length; i++) {
+		const exitCallback = transforms[i](context.currentNode, context)
+		if (exitCallback) {
+			exitFns.push(exitCallback)
+		}
+		if(!context.currentNode) {
+			return
+		}
+	}
+	const children = context.currentNode.children
+	if (children) {
+		for(let i = 0; i < children.length; i++) {
+			context.parent = context.currentNode
+			context.childIndex = i
+			traverseNode(children[i], context)
+		}
+	}
+	for (let i = exitFns.length - 1; i >= 0; i--) {
+		exitFns[i]()
+	}
+}
+
+const transform = function(ast) {
+	const context = {
+		currentNode: null, // 暂存当前的转换的节点
+		childIndex: 0,   // 暂存当前节点在父节点children的位置索引
+		parent: null, // 点前节点的父节点
+		replaceNode(node){
+			// 找到当前节点的父节点children数组，根据当前的childrenIndex标记找到当前节点所在位置进行替换
+			context.parent.children[context.childIndex] = node
+			// 同事更新上下文中currentNode的值为新节点
+			context.currentNode = node;
+		},
+		removeNode() {},
+		nodeTransforms: [
+			transformText // 回调函数功能：转换文本节点
+		]
+	}
+	// 将上下文传入traverseNode
+	traverseNode(ast, context)
+	console.log(dumpAst(ast))
+}
+
+const transformElement = function(node) {
+	// 转换逻辑放在退出阶段 保证所有的子节点已经处理完毕
+	return () => {
+		if(node.type !== "Element") {
+			return
+		}
+		const callExp = createCallExpression("h", [
+			createLiteral(node.tag)
+		])
+		node.children.length === 1 ? callExp.arguments.push(node.children[0].jsNode) : callExp.arguments.push(createArrayExpression(node.children.map(item => item.jsNode)))
+		node.jsNode = callExp
+	}
+}
+const transformText = function(node, context) {
+	if (node.type != "Text") {
+		return
+	}
+	node.jsNode = createLiteral(node.content)
+}
+
+// 首先定义几个辅助函数，方便节点转换
+const createLiteral = function(value) {
+	return {
+		type: "Literal",
+		value: value
+	}
+}
+
+const createIdentifier = function(name) {
+	return {
+		type: "Identifier",
+		name
+	}
+}
+
+const createArrayExpression = function(elements) {
+	return {
+		type: "ArrayExpression",
+		elements
+	}
+}
+
+const createCallExpression = function(elements) {
+	return {
+		type: "CallExpression",
+		callee: createIdentifier(callee),
+		arguments
+	}
+}
+
+const transformRoot = function(node) {
+	return () => {
+		if (node.type !== 'Root') {
+			return
+		}
+		const vnodeJSAST = node.children[0].jsNode
+		node.jsNode = {
+			type: "FunctionDeclaration",
+			id: {type: "Identifier", name: "render"},
+			params: [],
+			body: [
+				type: "ReturnStatement",
+				return vnodeJSAST 
+			]
+		}
+	}
+}
+
+const generate = function (node) {
+    const context = {
+        code: '',
+        // 拼接代码字符串
+        push(code) {
+            context.code += code;
+        },
+        // 记录当前缩进
+        currentIndent: 0,
+        // 换行
+        newline() {
+            context.code += '\n' + `  `.repeat(context.currentIndent)
+        },
+        // 新增缩进
+        indent() {
+            context.currentIndent++;
+            context.newline();
+        },
+        // 取消缩进
+        deIndent() {
+            context.currentIndent--;
+            context.newline();
+        }
+    }
+    genNode(node, context); //生成代码
+    return context.code;
+}
+
+const compile = function(template) {
+	const templateAST = parse(template) // 解析
+	transform(templateAST) // AST转换
+	const jsAST = templateAST.jsNode
+	const code = genenrate(jsAST) // 目标代码生成
+	return code
+}
+
+
+const genNode = function(node, context) {
+	switch(node.type) {
+		case "FunctionDeclaration":
+		   genFunctionDeclaration(node, context)
+		   break
+		case "ReturnStatement":
+		   genReturnStatement(node, context)
+		   break
+		case "CallExpression":
+		   genCallExpression(node, context)
+		   break
+		case "Literal":
+		   genLiteral(node, context)
+		   break
+		case "ArrayExpression":
+		   genArrayExpression(node, context)
+		   break
+	}
+}
+
+// 处理函数声明入参字符串拼接
+const genNodeList = function () {
+    const { push } = context;
+    for (let i = 0; i < nodes.length; i++) {
+        const node = nodes[i];
+        genNode(node, context);
+        if (i < nodes.length - 1) {
+            push(', ');
+        }
+    }
+}
+const genFunctionDeclaration = function (node, context) {
+    const { push, indent, deIndent } = context;
+    push(`function ${node.id.name}`);
+    push(`(`);
+    genNodeList(node.params, context);
+    push(')');
+    push('{');
+    indent();
+    // 遍历执行函数体内每一条语句的代码拼接
+    node.body.forEach((item) => {
+        genNode(item, context);
+    });
+    deIndent();
+    push('}');
+}
+
+
 const templateAST = parse("<div>Hello</div>")
-dumpAst(templateAST)
+transform(templateAST)
