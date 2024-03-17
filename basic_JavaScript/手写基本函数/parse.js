@@ -14,7 +14,6 @@ const isAlpha = (char) => {
 
 // template 转化为token
 const tokenize = function(templateStr) {
-	console.log("开始执行这个函数")
 	let currentState = state.initial // 设置初始状态
 	const chars = []  // 暂时存储匹配到的字符
 	const tokens = [] // 存储匹配到的token
@@ -25,12 +24,11 @@ const tokenize = function(templateStr) {
 			case state.initial:
 			     // 初始状态下
 				 if (char === "<") {
-					 console.log("进入<")
 					currentState = state.tagOpen // 状态转移
 					templateStr = templateStr.slice(1) // 消费一个字符
 				 } else if (isAlpha(char)) {
 					 currentState = state.text // 状态转移
-					 chars.push(char)
+					 //chars.push(char)
 					 templateStr.slice(1) // 消费一个字符
 				 }
 				 break
@@ -43,7 +41,7 @@ const tokenize = function(templateStr) {
 				} else if (isAlpha(char)) {
 					// 状态转移-- 标签名称状态
 					currentState = state.tagName
-					chars.push(char)
+					//chars.push(char)
 					templateStr.slice(1) // 消费一个字符
 				}
 				break
@@ -111,9 +109,66 @@ const tokenize = function(templateStr) {
 	}
 	console.log("打印最终的结果")
 	console.log(tokens)
+	return tokens
 }
 
 
-var templateStr = "<div>this</div>"
+const parse = function(str) {
+	// 标记化
+	const tokenArr = tokenize(str)
+	// 虚拟节点对象
+	const root = {
+		type: "root",
+		children: []
+	}
+	// 栈结构
+	const elementStack = [root]
+	// 扫描token数组
+	while(tokenArr.length) {
+		// 保存当前栈顶元素
+		const parent = elementStack[elementStack.length - 1]
+		const t = tokenArr[0]
+		switch(t.type) {
+			case "tag":
+			  // 创建节点元素
+			  const elementNode = {
+				  type: "Element",
+				  tag: t.name,
+				  children: []
+			  }
+			  parent.children.push(elementNode)
+			  elementStack.push(elementNode)
+			  break
+			case "text":
+		      // 创建文本节点
+			  const textNode = {
+				  type: "text",
+				  content: t.content
+			  }
+			  parent.children.push(textNode)
+			  break
+			case "tagEnd":
+			  elementStack.pop()
+			  break
+		}
+		tokenArr.shift()
+	}
+	console.log("在最后打印root")
+	console.log(root)
+	return root
+}
 
-tokenize(templateStr)
+const dumpAst = function(node, indent = 2) {
+	const type = node.type
+	const desc = node.type === "root" ? "根节点" : node.type === "Element" ? node.tag : node.content
+	console.log(`${'-'.repeat(indent)}${type}: ${desc}`)
+	
+	if (node.children) {
+		node.children.forEach((nod) => {
+			dumpAst(nod, indent + 2)
+		})
+	}
+}
+
+const templateAST = parse("<div>Hello</div>")
+dumpAst(templateAST)
