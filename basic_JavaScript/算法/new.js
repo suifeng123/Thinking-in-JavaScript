@@ -24,24 +24,24 @@
 
 function split(s, wordDict) {
 	const spiltHelper = (s, wordDict) => {
-		console.log(s)
-		for (let item of wordDict) {
-			if (s.indexOf(wordDict) != -1) {
-				return false
-			} else {
+		for(let item of wordDict) {
+			if (s.indexOf(item) != -1) {
 				let index = s.indexOf(item)
-				let endIndex = item.length
-				if(index == 0) {
-					s = s.substring(endIndex)
+				if (index == 0) {
+					s = s.substring(item.length)
+					console.log("进入第一个")
 					console.log(s)
-					if (!s.length) return true
-					spiltHelper(s, wordDict)
+					console.log(s.length)
+					if(s.length == 0) return true
+					return spiltHelper(s, wordDict) // 递归调用
 				} else {
-					let temp1 = s.substring(0, index)
-					let temp2 = s.substring(index + endIndex, s.length)
-					s = temp1 + temp2
-					if (!s.length) return true
-					spiltHelper(s, wordDict)
+					let temp = s.substring(0, index)
+					let temp2 = s.substring(index + item.length, s.length)
+					s = temp + temp2
+					console.log("进入第二个")
+					console.log(s)
+					if (s.length == 0) return true 
+					return spiltHelper(s, wordDict)
 				}
 			}
 		}
@@ -50,4 +50,4 @@ function split(s, wordDict) {
 	if(!wordDict.length) return false
 	console.log(spiltHelper(s, wordDict))
 }
-split("applepenapplepenpen", ["apple", "pen"])
+split("catsandog", ["cats", "dog", "sand", "and", "cat"])
