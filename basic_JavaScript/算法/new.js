@@ -50,4 +50,26 @@ function split(s, wordDict) {
 	if(!wordDict.length) return false
 	console.log(spiltHelper(s, wordDict))
 }
-split("catsandog", ["cats", "dog", "sand", "and", "cat"])
+
+function coinsChange(coins, amount) {
+	// 零钱兑换
+	/**
+	 * 定义dp[i]: 当金额为i时，至少需要dp[i]枚硬币凑出
+	 */
+	let dp = new Array(amount + 1).fill(amount + 1)
+	
+	dp[0] = 0
+	for (let i = 0; i < dp.length; i++) {
+		for(let coin of coins) {
+			if (i - coin < 0) continue
+			dp[i] = Math.min(dp[i], dp[i - coin] + 1)
+		}
+	}
+	if (dp[amount] != amount + 1) {
+		return dp[amount]
+	} else {
+		return -1
+	}
+}
+
+console.log(coinsChange([1,2,5], 11))
