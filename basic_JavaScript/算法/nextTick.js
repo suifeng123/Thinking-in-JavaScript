@@ -10,12 +10,7 @@ class Component {
 				target[propKey] = receiver
 				if(!this.pending) {
 					this.pending = true
-					/**
 					Promise.resolve().then(() => {
-						this.render()
-					})
-					**/
-					setTimeout(() => {
 						this.render()
 					})
 				}
@@ -32,3 +27,7 @@ class Component {
 let c = new Component()
 c.data.name = "sheng"
 c.data.name = "wen"
+
+setTimeout(() => {
+	console.log("这是一个测试函数")
+})

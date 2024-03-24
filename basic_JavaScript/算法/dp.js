@@ -22,35 +22,38 @@ function LengthLIS(nums){
 	return res
 }
 
-class Component {
-	_data = {
-		name: "www"
-	}
-	pending = false
-	constructor() {
-		this.data = new Proxy(this._data, {
-			set: (target, propKey, receiver) => {
-				this._data[propKey] = receiver
-				if (!this.pending) {
-					this.pending = true
-					Promise.resolve().then(() => {
-						this.render() // 放入微队列
-					})
-				}
+function lengthOfLIS2(nums) {
+	let top = new Array(nums.length)
+	// 牌堆数初始化为0
+	let piles = 0
+	for (let i = 0; i < nums.length; i++) {
+		// 要处理的扑克牌数
+		let poker = nums[i]
+		/*** 搜索左边界的二分搜索 ***/
+		let left = 0, right = piles
+		while(left < right) {
+			let mid = (left + right) / 2
+			if (top[mid] > poker) {
+				right = mid
+			} else if (top[mid] < poker) {
+				left = mid + 1
+			} else {
+				right = mid
 			}
-		})
+		}
+		
+		// 没有找到合适的牌堆 新建一堆
+		if (left === piles) piles++
+		// 把这张牌放到牌堆顶
+		top[left] = poker
 	}
 	
-	render() {
-		this.pending = false
-		console.log(`打印现在的data${this._data.name}`)
-	}
+	// 牌堆数就是LIS的长度
+	console.log("进行最终的打印的堆")
+	console.log(piles)
+	return piles
 }
 
-let c = new Component()
-c.data.name = "1"
-c.data.name = '2'
-c.data.name = "3"
-
+lengthOfLIS2([6, 3, 5, 10, 11, 2, 9, 14, 13, 7, 4, 8, 12])
 
 
