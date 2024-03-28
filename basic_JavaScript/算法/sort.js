@@ -101,7 +101,6 @@ function quickSort(arr) {
 
 function mergeSort(arr) {
 	if (arr.length > 1) {
-		console.log("进入了这个函数")
 		let len = arr.length
 		let index = Math.floor(len / 2)
 		let left = mergeSort(arr.slice(0, index))
@@ -124,11 +123,12 @@ function merge(left, right) {
 		}
 	}
 	if (i < left.length) {
-		result.concat(left.slice(i))
+		result = result.concat(left.slice(i))
 	}
 	if (j < right.length) {
-		result.concat(right.slice(j))
+		result = result.concat(right.slice(j))
 	}
 	return result
 }
-console.log(mergeSort([5,4,3,2,1]))
+// console.log(merge([5,4,3,2,1], [8, 12, 13]))
+console.log(mergeSort([5, 4, 3, 2, 1]))
