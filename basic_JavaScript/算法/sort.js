@@ -131,4 +131,10 @@ function merge(left, right) {
 	return result
 }
 // console.log(merge([5,4,3,2,1], [8, 12, 13]))
-console.log(mergeSort([5, 4, 3, 2, 1]))
+// console.log(mergeSort([5, 4, 3, 2, 1]))
+let num = 1
+while(num < 10) {
+	if (num == 5) continue
+	console.log(num)
+	num++
+}
